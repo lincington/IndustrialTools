@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace IndustrialTools.Modules.ModuleName.Views
+namespace IndustrialTools.Modules.Menu.Views
 {
     /// <summary>
     /// Interaction logic for ViewA.xaml
     /// </summary>
-    public partial class ViewA : UserControl
+    public partial class Menu : UserControl
     {
-        public ViewA()
+        public Menu()
         {
             InitializeComponent();
         }

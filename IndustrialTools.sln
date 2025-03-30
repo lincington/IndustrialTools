@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35828.75 d17.13
+VisualStudioVersion = 17.13.35828.75
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndustrialTools.Modules.ModuleName.Tests", "IndustrialTools\Tests\IndustrialTools.Modules.ModuleName.Tests\IndustrialTools.Modules.ModuleName.Tests.csproj", "{39260785-ABC5-F314-9520-BABB8506B863}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{BF753797-C73A-4579-8A11-54EA312AED16}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndustrialTools.Modules.ModuleName", "IndustrialTools\Modules\IndustrialTools.Modules.ModuleName\IndustrialTools.Modules.ModuleName.csproj", "{7785068E-E150-B28C-560F-43DA912EC716}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{2590668C-3681-4A4C-A02B-90ED55069D97}"
 EndProject
@@ -21,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndustrialTools", "Industri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndustrialTools.Core", "IndustrialTools\IndustrialTools.Core\IndustrialTools.Core.csproj", "{DF3274FF-91AD-9275-C312-F67031610954}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndustrialTools.Modules.Menu", "IndustrialTools\Modules\IndustrialTools.Modules.Menu\IndustrialTools.Modules.Menu.csproj", "{BBCA42E6-DA05-4087-832D-1EF2E13A3264}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndustrialTools.Modules.Content", "IndustrialTools\Modules\IndustrialTools.Modules.Content\IndustrialTools.Modules.Content.csproj", "{3A20218D-7B38-40A6-A9FB-5E9923138F22}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,10 +33,6 @@ Global
 		{39260785-ABC5-F314-9520-BABB8506B863}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39260785-ABC5-F314-9520-BABB8506B863}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39260785-ABC5-F314-9520-BABB8506B863}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7785068E-E150-B28C-560F-43DA912EC716}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7785068E-E150-B28C-560F-43DA912EC716}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7785068E-E150-B28C-560F-43DA912EC716}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7785068E-E150-B28C-560F-43DA912EC716}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C8FACAC4-9253-1121-DAC5-744E0203025E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C8FACAC4-9253-1121-DAC5-744E0203025E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8FACAC4-9253-1121-DAC5-744E0203025E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,15 +49,24 @@ Global
 		{DF3274FF-91AD-9275-C312-F67031610954}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF3274FF-91AD-9275-C312-F67031610954}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF3274FF-91AD-9275-C312-F67031610954}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBCA42E6-DA05-4087-832D-1EF2E13A3264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBCA42E6-DA05-4087-832D-1EF2E13A3264}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBCA42E6-DA05-4087-832D-1EF2E13A3264}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBCA42E6-DA05-4087-832D-1EF2E13A3264}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A20218D-7B38-40A6-A9FB-5E9923138F22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A20218D-7B38-40A6-A9FB-5E9923138F22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A20218D-7B38-40A6-A9FB-5E9923138F22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A20218D-7B38-40A6-A9FB-5E9923138F22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{39260785-ABC5-F314-9520-BABB8506B863} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
-		{7785068E-E150-B28C-560F-43DA912EC716} = {BF753797-C73A-4579-8A11-54EA312AED16}
 		{C8FACAC4-9253-1121-DAC5-744E0203025E} = {2590668C-3681-4A4C-A02B-90ED55069D97}
 		{57316FB7-6F18-3451-F043-2E341F43A721} = {2590668C-3681-4A4C-A02B-90ED55069D97}
+		{BBCA42E6-DA05-4087-832D-1EF2E13A3264} = {BF753797-C73A-4579-8A11-54EA312AED16}
+		{3A20218D-7B38-40A6-A9FB-5E9923138F22} = {BF753797-C73A-4579-8A11-54EA312AED16}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FC3446B4-9892-4AE4-8C95-C469732ACF39}

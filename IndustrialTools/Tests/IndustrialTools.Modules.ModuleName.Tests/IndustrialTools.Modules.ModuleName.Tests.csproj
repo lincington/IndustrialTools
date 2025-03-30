@@ -20,8 +20,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Modules\IndustrialTools.Modules.ModuleName\IndustrialTools.Modules.ModuleName.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -2,9 +2,10 @@
 using IndustrialTools.Views;
 using System.Windows;
 using Prism.Modularity;
-using IndustrialTools.Modules.ModuleName;
 using IndustrialTools.Services.Interfaces;
 using IndustrialTools.Services;
+using IndustrialTools.Modules.Menu;
+using IndustrialTools.Modules.Content;
 
 namespace IndustrialTools
 {
@@ -25,7 +26,9 @@ namespace IndustrialTools
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-            moduleCatalog.AddModule<ModuleNameModule>();
+            moduleCatalog.AddModule<MenuModule>();
+            moduleCatalog.AddModule<ContentModule>();
+
         }
     }
 }

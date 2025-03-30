@@ -6,4 +6,7 @@
   <ItemGroup>
     <PackageReference Include="Prism.Wpf" Version="9.0.537" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\IndustrialTools.Core\IndustrialTools.Core.csproj" />
+  </ItemGroup>
 </Project>
