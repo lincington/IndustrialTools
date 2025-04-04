@@ -3,7 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
+        Loaded="Window_Loaded"
         xmlns:core="clr-namespace:IndustrialTools.Core;assembly=IndustrialTools.Core"
+        Background="LightGray"   WindowStartupLocation="CenterScreen"    
+        WindowState="Maximized"   ShowInTaskbar="True" ResizeMode="NoResize" WindowStyle="None"
+        AllowsTransparency="True" 
         Title="{Binding Title}" Height="350" Width="525" >
     <Grid>
         <Grid.RowDefinitions>

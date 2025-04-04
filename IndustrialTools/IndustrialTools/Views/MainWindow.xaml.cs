@@ -11,5 +11,11 @@ namespace IndustrialTools.Views
         {
             InitializeComponent();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.MaxHeight = SystemParameters.WindowCaptionHeight+ SystemParameters.FullPrimaryScreenHeight;
+            this.MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
+        }
     }
 }
