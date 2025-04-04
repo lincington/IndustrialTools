@@ -4,17 +4,70 @@
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
         Loaded="Window_Loaded"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown" 
         xmlns:core="clr-namespace:IndustrialTools.Core;assembly=IndustrialTools.Core"
-        Background="LightGray"   WindowStartupLocation="CenterScreen"    
-        WindowState="Maximized"   ShowInTaskbar="True" ResizeMode="NoResize" WindowStyle="None"
-        AllowsTransparency="True" 
-        Title="{Binding Title}" Height="350" Width="525" >
-    <Grid>
+        Background="LightGray"   WindowStartupLocation="CenterScreen"   WindowStyle="None"
+        ShowInTaskbar="True" WindowState="Maximized"  
+        Title="{Binding Title}" Height="560" Width="1000" >
+    <Grid  Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="46" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <ContentControl   Grid.Row="0"  prism:RegionManager.RegionName="{x:Static core:RegionNames.MenuRegion}" />
-        <ContentControl   Grid.Row="1"  prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}" />
+        <Grid  Grid.Row="0" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="8*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border Grid.ColumnSpan="2" CornerRadius="5" Margin="0" BorderThickness="0" >
+                <Border.Background>
+                    <SolidColorBrush Color="White"/>
+                </Border.Background>
+                <Border.BorderBrush>
+                    <SolidColorBrush Color="White"/>
+                </Border.BorderBrush>
+                <Border.Effect>
+                    <DropShadowEffect Color="White" ShadowDepth="3" />
+                </Border.Effect>
+            </Border>
+            <StackPanel Grid.Column="0">
+                <ContentControl     prism:RegionManager.RegionName="{x:Static core:RegionNames.MenuRegion}" />
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right"  Grid.Column="1" Orientation="Horizontal" >
+                <Button Cursor="Hand"   Command="{Binding   MinimizeCommand}"  CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
+                    <Button.ToolTip>
+                        <ToolTip  Content="最小化"/>
+                    </Button.ToolTip>
+                    <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE921;"/>
+                </Button>
+                <Button Cursor="Hand"  Command="{Binding   MaximizeCommand}"  CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
+                    <Button.ToolTip>
+                        <ToolTip  Content="最大化"/>
+                    </Button.ToolTip>
+                    <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE922;"/>
+                </Button>
+                <Button  Cursor="Hand"    Command="{Binding  CloseCommand}"  CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
+                    <Button.ToolTip>
+                        <ToolTip  Content="关闭"/>
+                    </Button.ToolTip>
+                    <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE8BB;"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <Grid  Grid.Row="1" Margin="5">
+            <Border Grid.RowSpan="3" CornerRadius="5"  BorderThickness="0" >
+                <Border.Background>
+                    <SolidColorBrush Color="White"/>
+                </Border.Background>
+                <Border.BorderBrush>
+                    <SolidColorBrush Color="White"/>
+                </Border.BorderBrush>
+                <Border.Effect>
+                    <DropShadowEffect Color="White" ShadowDepth="3" />
+                </Border.Effect>
+            </Border>
+            <ContentControl     prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}" />
+        </Grid>
     </Grid>
 </Window>

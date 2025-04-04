@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 
 namespace IndustrialTools.Views
 {
@@ -8,14 +9,27 @@ namespace IndustrialTools.Views
     public partial class MainWindow : Window
     {
         public MainWindow()
-        {
-            InitializeComponent();
+        {          
+            InitializeComponent();  
+            //SystemCommands.MaximizeWindow(this);
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
+        {        
+            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+            this.MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;           
+
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            this.MaxHeight = SystemParameters.WindowCaptionHeight+ SystemParameters.FullPrimaryScreenHeight;
-            this.MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
+            // 检查鼠标左键是否按下
+            if (e.ButtonState == MouseButtonState.Pressed)
+            {
+                // 开始拖动窗口
+                this.DragMove();
+            }
         }
     }
 }
