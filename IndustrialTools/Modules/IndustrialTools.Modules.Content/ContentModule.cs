@@ -1,5 +1,4 @@
 ﻿using IndustrialTools.Core;
-using IndustrialTools.Modules.Content.Views;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Navigation.Regions;

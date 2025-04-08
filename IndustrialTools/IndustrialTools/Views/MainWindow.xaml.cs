@@ -16,10 +16,9 @@ namespace IndustrialTools.Views
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {        
-            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
-            this.MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
-            SystemCommands.MaximizeWindow(this);
-
+            //this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+            //this.MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
+            //SystemCommands.MaximizeWindow(this);
         }
 
         private void Window_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)

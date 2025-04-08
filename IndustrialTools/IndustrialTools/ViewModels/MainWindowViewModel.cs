@@ -1,5 +1,4 @@
 ﻿using Prism.Commands;
-using Prism.Dialogs;
 using Prism.Mvvm;
 using System.Windows;
 
