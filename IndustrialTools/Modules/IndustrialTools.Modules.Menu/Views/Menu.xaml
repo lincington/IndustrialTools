@@ -33,6 +33,12 @@
                 <Separator />
                 <MenuItem Header="Select All" />
             </MenuItem>
+            <MenuItem Header="Connection">
+                <MenuItem Header="Options" />
+                <Separator />
+                <MenuItem Header="Customize..." />
+                <MenuItem Header="Add-Ins" />
+           </MenuItem>
         </Menu>
     </Grid>
 </UserControl>
