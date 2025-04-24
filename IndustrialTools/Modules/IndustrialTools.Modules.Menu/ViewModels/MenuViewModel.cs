@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using IndustrialTools.Core;
+using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,18 @@ namespace IndustrialTools.Modules.Menu.ViewModels
             set { SetProperty(ref _message, value); }
         }
 
-        public MenuViewModel()
+        private IApplicationCommands _applicationCommands;
+        public IApplicationCommands ApplicationCommands
         {
-            Message = "View A from your Prism Module";
+            get { return _applicationCommands; }
+            set { SetProperty(ref _applicationCommands, value); }
         }
+
+        public MenuViewModel(IApplicationCommands applicationCommands)
+        {
+            ApplicationCommands = applicationCommands;
+        }
+
+
     }
 }

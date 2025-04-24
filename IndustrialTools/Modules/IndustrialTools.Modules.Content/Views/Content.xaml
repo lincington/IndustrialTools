@@ -9,6 +9,6 @@
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True" >
     <Grid>
-        
+        <Button HorizontalAlignment="Center" Command="{Binding UpdateCommand}" Content="Connection" Margin="5"/>
     </Grid>
 </UserControl>

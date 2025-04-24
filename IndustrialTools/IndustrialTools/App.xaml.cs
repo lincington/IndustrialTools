@@ -6,6 +6,7 @@ using IndustrialTools.Services.Interfaces;
 using IndustrialTools.Services;
 using IndustrialTools.Modules.Menu;
 using IndustrialTools.Modules.Content;
+using IndustrialTools.Core;
 
 namespace IndustrialTools
 {
@@ -22,6 +23,10 @@ namespace IndustrialTools
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<IMessageService, MessageService>();
+
+            // Register other services and types here
+
+            containerRegistry.RegisterSingleton<IApplicationCommands, ApplicationCommands>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
