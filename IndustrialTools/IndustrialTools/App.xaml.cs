@@ -7,6 +7,8 @@ using IndustrialTools.Services;
 using IndustrialTools.Modules.Menu;
 using IndustrialTools.Modules.Content;
 using IndustrialTools.Core;
+using IndustrialTools.Modules.Content.Views;
+using IndustrialTools.Modules.Content.ViewModels;
 
 namespace IndustrialTools
 {
@@ -27,6 +29,9 @@ namespace IndustrialTools
             // Register other services and types here
 
             containerRegistry.RegisterSingleton<IApplicationCommands, ApplicationCommands>();
+
+            containerRegistry.RegisterDialog<ConnectionDialog, ConnectionDialogViewModel>();
+
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

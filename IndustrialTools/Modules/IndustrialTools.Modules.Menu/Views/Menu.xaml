@@ -33,11 +33,8 @@
                 <Separator />
                 <MenuItem Header="Select All" />
             </MenuItem>
-            <MenuItem Header="Connection"  >
-                <MenuItem Header="Options" Command="{Binding ApplicationCommands.Connection}"/>
-                <Separator />
-                <MenuItem Header="Customize..." />
-                <MenuItem Header="Add-Ins" />
+            <MenuItem Header="Connection"  Command="{Binding ApplicationCommands.Connection}">
+               
            </MenuItem>
         </Menu>
     </Grid>
