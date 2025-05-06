@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 ﻿using IndustrialTools.Core;
 using Prism.Commands;
 using Prism.Dialogs;
 using Prism.Mvvm;
 using System.Windows;
+=======
+﻿using Prism.Mvvm;
+
+>>>>>>> 9def3e070e8668e2d0bbb32c9cc692b2af9e9a1f
 
 namespace IndustrialTools.Modules.Content.ViewModels
 {

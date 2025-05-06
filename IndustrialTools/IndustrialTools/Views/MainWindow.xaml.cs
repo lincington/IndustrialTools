@@ -11,12 +11,21 @@ namespace IndustrialTools.Views
         public MainWindow()
         {          
             InitializeComponent();  
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9def3e070e8668e2d0bbb32c9cc692b2af9e9a1f
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {        
             //this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+<<<<<<< HEAD
             //this.MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;           
+=======
+            //this.MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
+            //SystemCommands.MaximizeWindow(this);
+>>>>>>> 9def3e070e8668e2d0bbb32c9cc692b2af9e9a1f
         }
 
         private void Window_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
