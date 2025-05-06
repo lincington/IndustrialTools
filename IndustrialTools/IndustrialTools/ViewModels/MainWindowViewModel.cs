@@ -7,7 +7,7 @@ namespace IndustrialTools.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        private string _title = "Prism Application";
+        private string _title = "Industrial Tools";
         public string Title
         {
             get { return _title; }
@@ -25,7 +25,7 @@ namespace IndustrialTools.ViewModels
         }
         private void MaxiMizeWindow(object obj)
         {
-            Window? mainWindow = obj as Window;
+            Window mainWindow = obj as Window;
             if (mainWindow != null)
             {
                 switch (mainWindow.WindowState)

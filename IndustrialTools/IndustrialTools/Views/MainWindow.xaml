@@ -6,15 +6,15 @@
         Loaded="Window_Loaded"
         MouseLeftButtonDown="Window_MouseLeftButtonDown" 
         xmlns:core="clr-namespace:IndustrialTools.Core;assembly=IndustrialTools.Core"
-        Background="LightGray"   WindowStartupLocation="CenterScreen"   WindowStyle="None"
-        ShowInTaskbar="True" WindowState="Maximized"  
+        Background="LightGray"   WindowStartupLocation="CenterScreen"   
+        ShowInTaskbar="True"       Icon="/abcd.png"   WindowState="Maximized"
         Title="{Binding Title}" Height="560" Width="1000" >
-    <Grid  Margin="10">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="46" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid  Grid.Row="0" Margin="5">
+        <Grid   Grid.Row="0" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="8*"></ColumnDefinition>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -33,7 +33,7 @@
             <StackPanel Grid.Column="0">
                 <ContentControl     prism:RegionManager.RegionName="{x:Static core:RegionNames.MenuRegion}" />
             </StackPanel>
-            <StackPanel HorizontalAlignment="Right"  Grid.Column="1" Orientation="Horizontal" >
+            <!--<StackPanel HorizontalAlignment="Right"  Grid.Column="1" Orientation="Horizontal" >
                 <Button Cursor="Hand"   Command="{Binding   MinimizeCommand}"  CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
                     <Button.ToolTip>
                         <ToolTip  Content="最小化"/>
@@ -52,10 +52,10 @@
                     </Button.ToolTip>
                     <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE8BB;"/>
                 </Button>
-            </StackPanel>
+            </StackPanel>-->
         </Grid>
 
-        <Grid  Grid.Row="1" Margin="5">
+        <Grid  Grid.Row="1" Margin="0,5,0,0">
             <Border Grid.RowSpan="3" CornerRadius="5"  BorderThickness="0" >
                 <Border.Background>
                     <SolidColorBrush Color="White"/>

@@ -1,21 +1,89 @@
 ﻿<UserControl x:Class="IndustrialTools.Modules.Content.Views.ConnectionDialog"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:prism="http://prismlibrary.com/"             
+             xmlns:prism="http://prismlibrary.com/"       Background="LightGray"      
              prism:ViewModelLocator.AutoWireViewModel="True"
              Width="800" Height="600">
-    <Grid x:Name="LayoutRoot" Margin="5">
+    <Grid x:Name="LayoutRoot" Margin="20" Background="White">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <TextBlock Text="{Binding Message}" ></TextBlock>
+        <Grid Grid.Row="0" Margin="30" >
+            <TabControl Grid.Column="1"  TabStripPlacement="Left">
+                <TabItem Header="DB  Connection">
+                    <Grid>
+                        <!--<Separator Grid.Column="1" />-->
+                        <Grid Grid.Column="2"  Margin="50,60,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"></ColumnDefinition>
+                                <ColumnDefinition  Width="7*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >连接名称:</TextBlock>
+                            <TextBox   Grid.Row="0"  Grid.Column="1"  Width="256"   Height="30"  ></TextBox>
+
+                            <TextBlock  Grid.Row="1"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >数据库类型:</TextBlock>
+                            <ComboBox   Grid.Row="1"  Grid.Column="1"  Width="256"   Height="30"  ></ComboBox>
+
+                            <TextBlock Grid.Row="2"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >主机:</TextBlock>
+                            <TextBox   Grid.Row="2"  Grid.Column="1"  Width="256"   Height="30"  ></TextBox>
+
+                            <TextBlock Grid.Row="3"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >端口:</TextBlock>
+                            <TextBox   Grid.Row="3"  Grid.Column="1"  Width="256"   Height="30"  ></TextBox>
+
+                            <TextBlock Grid.Row="4"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >用户名:</TextBlock>
+                            <TextBox   Grid.Row="4"  Grid.Column="1"  Width="256"   Height="30"  ></TextBox>
+
+                            <TextBlock Grid.Row="5"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >密码:</TextBlock>
+                            <TextBox   Grid.Row="5"  Grid.Column="1"  Width="256"   Height="30"  ></TextBox>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="Modbus  Connection">
+                    
+                </TabItem>
+
+                <TabItem Header="PLC  Connection">
+
+                </TabItem>
+
+                <TabItem Header="COM  Connection">
+
+                </TabItem>
+
+                <TabItem Header="TCP/UDP  Connection">
+
+                </TabItem>
+
+
+                <TabItem Header="MQ Connection">
+
+                </TabItem>
+                <TabItem Header="RPC  Connection">
+
+                </TabItem>
+            </TabControl>
+        
         </Grid>
 
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5" Grid.Row="1" >
+        <Grid Grid.Row="1" Grid.Column="1" Background="LightGray" >
+           <StackPanel    Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="399,10,0,0" >
             <Button Command="{Binding CloseDialogCommand}" CommandParameter="true" Content="OK" Width="75" Height="30" IsDefault="True" />
             <Button Command="{Binding CloseDialogCommand}" CommandParameter="false" Content="Cancel" Width="75" Height="30" Margin="10,0,0,0" IsCancel="True" />
         </StackPanel>
+        </Grid>
+       
     </Grid>
 </UserControl>
