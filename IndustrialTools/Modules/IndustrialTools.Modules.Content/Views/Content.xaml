@@ -9,6 +9,44 @@
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True" >
     <Grid>
-        <Button HorizontalAlignment="Center" Command="{Binding UpdateCommand}" Content="Connection" Margin="5"/>
+        <Button HorizontalAlignment="Center" Command="{Binding UpdateCommand}"  Visibility="Collapsed" Content="Connection" Margin="5"/>
+        <Grid>
+            <!-- 定义两列 -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="160" />
+                <!-- 左侧控件 -->
+                <ColumnDefinition Width="5" />
+                <!-- GridSplitter -->
+                <ColumnDefinition Width="*" />
+                <!-- 右侧控件 -->
+            </Grid.ColumnDefinitions>
+
+            <!-- 左侧控件 -->
+            <Border Grid.Column="0" Background="White">
+                <!--<ContentControl prism:RegionManager.RegionName="LeftContentRegion" />-->
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="User Sessions"  Height="35" TextAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <TreeView ItemsSource="{Binding Nodes}">
+                        <TreeView.ItemTemplate>
+                            <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                <TextBlock Text="{Binding Name}" />
+                            </HierarchicalDataTemplate>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
+
+                </StackPanel>
+          
+            </Border>
+
+            <!-- GridSplitter -->
+            <GridSplitter Grid.Column="1" Width="5" Background="Gray"
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+
+            <!-- 右侧控件 -->
+            <Border Grid.Column="2" Background="LightGreen">
+                <ContentControl prism:RegionManager.RegionName="MidContentRegion" />
+            </Border>
+        </Grid>
+
     </Grid>
 </UserControl>

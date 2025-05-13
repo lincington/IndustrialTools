@@ -1,13 +1,12 @@
-<<<<<<< HEAD
-﻿using IndustrialTools.Core;
+using IndustrialTools.Common.Models;
+using IndustrialTools.Core;
+using Npgsql.Replication.PgOutput.Messages;
 using Prism.Commands;
 using Prism.Dialogs;
 using Prism.Mvvm;
-using System.Windows;
-=======
-﻿using Prism.Mvvm;
-
->>>>>>> 9def3e070e8668e2d0bbb32c9cc692b2af9e9a1f
+using Prism.Navigation.Regions;
+using SqlSugar;
+using System.Collections.ObjectModel;
 
 namespace IndustrialTools.Modules.Content.ViewModels
 {
@@ -21,46 +20,66 @@ namespace IndustrialTools.Modules.Content.ViewModels
         }
 
 
-        private string _title = "Prism Application";
+        private string _title = "IndustrialTools";
         public string Title
         {
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
 
-
+        private readonly IRegionManager _regionManager;
 
         IApplicationCommands _applicationCommands;
 
         private IDialogService _dialogService;
 
-
         public DelegateCommand UpdateCommand { get; private set; }
 
+        public ObservableCollection<TreeNode> Nodes { get; set; }
 
-        public ContentViewModel(IApplicationCommands applicationCommands,IDialogService dialogService)
+        public ContentViewModel(IApplicationCommands applicationCommands, IRegionManager regionManager, IDialogService dialogService)
         {
-            Message = "View A from your Prism Module";
-
             _applicationCommands = applicationCommands;
             _dialogService = dialogService;
+            _regionManager = regionManager;
 
             UpdateCommand = new DelegateCommand(Update);
             _applicationCommands.Connection.RegisterCommand(UpdateCommand);
 
-
+            Nodes = new ObservableCollection<TreeNode>();
+            //{
+            //    new TreeNode("Root 1")
+            //    {
+            //        Children = new ObservableCollection<TreeNode>
+            //        {
+            //            new TreeNode("Child 1.1")
+            //            {
+            //        Children = new ObservableCollection<TreeNode>
+            //        {
+            //            new TreeNode("Child 2.1"),
+            //            new TreeNode("Child 2.2")
+            //        }
+            //        }
+            //        }
+            //    },
+            //    new TreeNode("Root 2")         
+            //};
         }
 
         private void Update()
         {
-            //MessageBox.Show("Update Command Executed");
-
             _dialogService.ShowDialog("ConnectionDialog", new DialogParameters($"message={Message}"), r =>
             {
                 if (r.Result == ButtonResult.None)
                     Title = "Result is None";
                 else if (r.Result == ButtonResult.OK)
+                {
                     Title = "Result is OK";
+                    Title = r.Parameters.GetValue<string>("ConnectionResult");
+                   string d  =   r.Parameters.GetValue<string>("ConnectionType");
+                    Nodes.Add(new TreeNode(d));
+                    _regionManager.RequestNavigate("MidContentRegion", Title);
+                }
                 else if (r.Result == ButtonResult.Cancel)
                     Title = "Result is Cancel";
                 else
@@ -68,4 +87,7 @@ namespace IndustrialTools.Modules.Content.ViewModels
             });
         }
     }
+
+
+  
 }

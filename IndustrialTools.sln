@@ -29,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{B70FC3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndustrialTools.Interface", "IndustrialTools\Common\IndustrialTools.Interface\IndustrialTools.Interface.csproj", "{9C007498-0714-4021-9A01-36106491B624}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndustrialToolsConsole", "IndustrialTools\Tests\IndustrialToolsConsole\IndustrialToolsConsole.csproj", "{C6C9D75D-02F8-4BB6-9102-B13FC7309855}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{9C007498-0714-4021-9A01-36106491B624}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C007498-0714-4021-9A01-36106491B624}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C007498-0714-4021-9A01-36106491B624}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6C9D75D-02F8-4BB6-9102-B13FC7309855}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6C9D75D-02F8-4BB6-9102-B13FC7309855}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6C9D75D-02F8-4BB6-9102-B13FC7309855}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6C9D75D-02F8-4BB6-9102-B13FC7309855}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,6 +89,7 @@ Global
 		{3A20218D-7B38-40A6-A9FB-5E9923138F22} = {BF753797-C73A-4579-8A11-54EA312AED16}
 		{458F4E11-1B87-4505-B254-AD0B0765E2BB} = {B70FC3F5-2694-4400-A0EF-ECF72C2A36F8}
 		{9C007498-0714-4021-9A01-36106491B624} = {B70FC3F5-2694-4400-A0EF-ECF72C2A36F8}
+		{C6C9D75D-02F8-4BB6-9102-B13FC7309855} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FC3446B4-9892-4AE4-8C95-C469732ACF39}

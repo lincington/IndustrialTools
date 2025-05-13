@@ -1,24 +1,96 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
+﻿using System.Data;
+using System.Data.SQLite;
 using System.Text;
-using System.Threading.Tasks;
 using Dapper;
 using Microsoft.Data.SqlClient;
+using MySqlConnector;
+using Npgsql;
+using Oracle.ManagedDataAccess.Client;
 
 
-namespace IndustrialTools.Core
+namespace IndustrialTools.Common
 {
     public class DapperHelper
     {
-        public static string ConnectionString = "Data Source=192.168.1.70;User Id=sa;Password=201015;Initial Catalog=Stock;TrustServerCertificate=true;Pooling=true;Min Pool Size=1";
-
+        private static string ConnectionString = "Data Source=192.168.1.70;User Id=sa;Password=201015;Initial Catalog=Stock;TrustServerCertificate=true;Pooling=true;Min Pool Size=1";
         private static string ConnString = "server=192.168.1.70;userid=root;pwd=201015;port=3306;database=stock;SslMode=none";
-
-        private readonly string PostgreSQLConnection = "PORT=5432;DATABASE=stock;HOST=192.168.1.70;PASSWORD=201015;USER ID=postgres";
-
+        private static string PostgreSQLConnection = "PORT=5432;DATABASE=stock;HOST=192.168.1.70;PASSWORD=201015;USER ID=postgres";
         private static string Connection = "Data Source = 192.168.1.70; Port=3306;User ID = root; Password=201015;Initial Catalog =stock; Charset=utf8;SslMode=none;Max pool size=10";
+
+        string MysqlTable = "SHOW TABLES;";
+        string SQLServerTable = "SELECT name FROM sys.tables;";
+        string PostgreSQLTable = "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';\r\n";
+        string SQLiteTable = "SELECT name FROM sqlite_master WHERE type='table';";
+
+        public DapperHelper()
+        {
+
+            // SQL Server
+            using (IDbConnection db = new SqlConnection("Server=localhost;Database=TestDb;User Id=sa;Password=your_password;"))
+            {
+                try
+                {
+                    db.Open();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+            // MySQL
+            using (IDbConnection db = new MySqlConnection("Server=localhost;Database=TestDb;User=root;Password=your_password;"))
+            {
+                try
+                {
+                    db.Open();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+            // PostgreSQL
+            using (IDbConnection db = new NpgsqlConnection("Host=localhost;Database=TestDb;Username=postgres;Password=your_password"))
+            {
+                try
+                {
+                    db.Open();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+            // SQLite
+            using (IDbConnection db = new SQLiteConnection("Data Source=TestDb.sqlite;Version=3;"))
+            {
+                try
+                {
+                    db.Open();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+            // Oracle
+            using (IDbConnection db = new OracleConnection("User Id=your_user;Password=your_password;Data Source=localhost:1521/xe;"))
+            {
+                try
+                {
+                    db.Open();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+
 
         /// <summary>
         /// 添加.
@@ -42,8 +114,7 @@ namespace IndustrialTools.Core
         /// <param name="sql">传入sql执行语句.</param>
         /// <param name="t">传入泛型类.</param>
         /// <returns>int.</returns>
-        public static int Add<T>(string sql, List<T> t)
-            where T : class
+        public static int Add<T>(string sql, List<T> t) where T : class
         {
             using (IDbConnection connection = new SqlConnection(ConnectionString))
             {
@@ -58,8 +129,7 @@ namespace IndustrialTools.Core
         /// <param name="sql">传入sql执行语句.</param>
         /// <param name="t">传入实体类型.</param>
         /// <returns>int.</returns>
-        public static int Delete<T>(string sql, T t)
-              where T : class
+        public static int Delete<T>(string sql, T t) where T : class
         {
             using (IDbConnection connection = new SqlConnection(ConnectionString))
             {
@@ -74,8 +144,7 @@ namespace IndustrialTools.Core
         /// <param name="sql">传入sql执行语句.</param>
         /// <param name="t">传入泛型类.</param>
         /// <returns>int.</returns>
-        public static int Delete<T>(string sql, List<T> t)
-              where T : class
+        public static int Delete<T>(string sql, List<T> t) where T : class
         {
             using (IDbConnection connection = new SqlConnection(ConnectionString))
             {

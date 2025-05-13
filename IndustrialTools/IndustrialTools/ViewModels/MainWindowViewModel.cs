@@ -6,11 +6,8 @@ namespace IndustrialTools.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-<<<<<<< HEAD
         private string _title = "Industrial Tools";
-=======
-        private string _title = "IndustrialTools";
->>>>>>> 9def3e070e8668e2d0bbb32c9cc692b2af9e9a1f
+
         public string Title
         {
             get { return _title; }

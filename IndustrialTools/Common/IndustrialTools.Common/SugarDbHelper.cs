@@ -16,7 +16,7 @@ namespace IndustrialTools.Common
     {
         public static SqlSugarClient New(string ConnectionString, DbType dbType)
         {
-             SqlSugarClient SqlServerDb = new SqlSugarClient(new ConnectionConfig()
+           SqlSugarClient SqlServerDb = new SqlSugarClient(new ConnectionConfig()
             {
                 ConnectionString = ConnectionString,
                 DbType = dbType,
@@ -31,18 +31,24 @@ namespace IndustrialTools.Common
                 SqlServerDb.Utilities.SerializeObject(pars.ToDictionary(it => it.ParameterName, it => it.Value)));
                 Console.WriteLine();
             };
-
+            //SqlServerDb.DbMaintenance.CreateDatabase();
             return SqlServerDb;
         }
     }
 
     public  class SugarDbContext 
     {
-         static  string    SqlServerConnectionString;
-         static  string    MySqlConnectionString;
-         static  string    PostgreSQLConnectionString;
-         static  string    SqliteConnectionString;
-         static  string    OracleConnectionString;
+
+        private static string MyConnection = "Data Source =192.168.1.70; Port=3306;User ID = root; Password=201015;Initial Catalog = stock; Charset=utf8;SslMode=none;Max pool size=10";
+        private static string MsConnection = "server=192.168.1.70,1433;uid=sa;pwd=Zhouenlai@305;database=stock";
+        private static string PgConnection = "PORT=5432;DATABASE=stock;HOST=192.168.1.70;PASSWORD=201015;USER ID=postgres";
+        private static string OrConnection = "Data Source=192.168.1.70/orcl;User ID=system;Password=haha";
+
+        //static  string    SqlServerConnectionString;
+        //static  string    MySqlConnectionString;
+        //static  string    PostgreSQLConnectionString;
+        //static  string    SqliteConnectionString;
+        //static  string    OracleConnectionString;
 
         public SugarDbContext()
         {

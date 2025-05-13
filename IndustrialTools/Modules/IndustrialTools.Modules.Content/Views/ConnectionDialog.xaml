@@ -31,22 +31,22 @@
                                 <RowDefinition Height="*"></RowDefinition>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >连接名称:</TextBlock>
-                            <TextBox   Grid.Row="0"  Grid.Column="1"  Width="256"   Height="30"  ></TextBox>
+                            <TextBox   Grid.Row="0"  Grid.Column="1"  Width="256"   Height="30"   HorizontalAlignment="Left"></TextBox>
 
                             <TextBlock  Grid.Row="1"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >数据库类型:</TextBlock>
-                            <ComboBox   Grid.Row="1"  Grid.Column="1"  Width="256"   Height="30"  ></ComboBox>
+                            <ComboBox   Grid.Row="1"  Grid.Column="1"  Width="256"   Height="30"   HorizontalAlignment="Left"></ComboBox>
 
                             <TextBlock Grid.Row="2"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >主机:</TextBlock>
-                            <TextBox   Grid.Row="2"  Grid.Column="1"  Width="256"   Height="30"  ></TextBox>
+                            <TextBox   Grid.Row="2"  Grid.Column="1"  Width="256"   Height="30"   HorizontalAlignment="Left"></TextBox>
 
                             <TextBlock Grid.Row="3"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >端口:</TextBlock>
-                            <TextBox   Grid.Row="3"  Grid.Column="1"  Width="256"   Height="30"  ></TextBox>
+                            <TextBox   Grid.Row="3"  Grid.Column="1"  Width="86"   Height="30"  HorizontalAlignment="Left"></TextBox>
 
                             <TextBlock Grid.Row="4"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >用户名:</TextBlock>
-                            <TextBox   Grid.Row="4"  Grid.Column="1"  Width="256"   Height="30"  ></TextBox>
+                            <TextBox   Grid.Row="4"  Grid.Column="1"  Width="186"   Height="30"   HorizontalAlignment="Left"></TextBox>
 
                             <TextBlock Grid.Row="5"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >密码:</TextBlock>
-                            <TextBox   Grid.Row="5"  Grid.Column="1"  Width="256"   Height="30"  ></TextBox>
+                            <TextBox   Grid.Row="5"  Grid.Column="1"  Width="186"   Height="30"   HorizontalAlignment="Left"></TextBox>
                         </Grid>
                     </Grid>
                 </TabItem>
@@ -67,7 +67,6 @@
 
                 </TabItem>
 
-
                 <TabItem Header="MQ Connection">
 
                 </TabItem>
@@ -79,10 +78,14 @@
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="1" Background="LightGray" >
-           <StackPanel    Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="399,10,0,0" >
+            <StackPanel    Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="120,10,86,0" >
+                <Button Command="{Binding CloseDialogCommand}" CommandParameter="test" Content="Test" Width="175" Height="30" IsDefault="True" />
+            </StackPanel>
+
+            <StackPanel    Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,10,86,0" >
             <Button Command="{Binding CloseDialogCommand}" CommandParameter="true" Content="OK" Width="75" Height="30" IsDefault="True" />
             <Button Command="{Binding CloseDialogCommand}" CommandParameter="false" Content="Cancel" Width="75" Height="30" Margin="10,0,0,0" IsCancel="True" />
-        </StackPanel>
+          </StackPanel>
         </Grid>
        
     </Grid>
