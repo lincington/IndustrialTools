@@ -11,5 +11,12 @@ namespace IndustrialTools.Modules.Content.Views
         {
             InitializeComponent();
         }
+
+        private void TextBox_GotFocus(object sender, System.Windows.RoutedEventArgs e)
+        {
+            TextBox tb = sender as TextBox; 
+
+            tb.CaretIndex = tb.Text.Length;
+        }
     }
 }

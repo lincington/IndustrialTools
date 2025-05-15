@@ -8,8 +8,10 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Prism.Core" Version="9.0.537" />
     <PackageReference Include="SqlSugarCore" Version="5.1.4.190-preview36" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.119" />
+    <PackageReference Include="System.IO.Ports" Version="9.0.5" />
   </ItemGroup>
 
   <ItemGroup>

@@ -7,14 +7,23 @@ using System;
 using Microsoft.IdentityModel.Logging;
 using System.Windows;
 using IndustrialTools.Common.Models;
+using Npgsql.Replication.PgOutput.Messages;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace IndustrialTools.Modules.Content.ViewModels 
 {
     public class ConnectionDialogViewModel : BindableBase, IDialogAware
     {
+        private DelegateCommand<object> _ComboboxSelectionChangedCommand;
+        public DelegateCommand<object> ComboboxSelectionChangedCommand =>
+            _ComboboxSelectionChangedCommand ?? (_ComboboxSelectionChangedCommand = new DelegateCommand<object>(ComboboxSelectionChangedDialog ));
+
+
         private DelegateCommand<string> _closeDialogCommand;
         public DelegateCommand<string> CloseDialogCommand =>
             _closeDialogCommand ?? (_closeDialogCommand = new DelegateCommand<string>(CloseDialog));
+
 
         private string _message= "DBConnection";
         public string Message
@@ -23,12 +32,34 @@ namespace IndustrialTools.Modules.Content.ViewModels
             set { SetProperty(ref _message, value); }
         }
 
-        private DBConnection _DBConnectmessage;
+        private DBConnection _DBConnectmessage = new  DBConnection();
         public DBConnection DBConnectMessage
         {
             get { return _DBConnectmessage; }
             set { SetProperty(ref _DBConnectmessage, value); }
         }
+
+
+        private ComplexInfoModel combboxItem;
+        /// <summary>
+        /// 下拉框选中信息
+        /// </summary>
+        public ComplexInfoModel CombboxItem
+        {
+            get { return combboxItem; }
+            set { SetProperty(ref combboxItem, value); }
+         }
+
+        private ObservableCollection<ComplexInfoModel> combboxList;
+        /// <summary>
+        /// 下拉框列表
+        /// </summary>
+        public ObservableCollection<ComplexInfoModel> CombboxList
+        {
+            get { return combboxList; }
+            set { SetProperty(ref combboxList, value); }
+         }
+
 
 
         private string _Typemessage = "DBConnection";
@@ -59,6 +90,29 @@ namespace IndustrialTools.Modules.Content.ViewModels
         }
 
 
+        protected virtual void ComboboxSelectionChangedDialog(object parameter)
+        {
+            ComplexInfoModel dd = parameter  as ComplexInfoModel;
+            DbType dbType = dd.Key;
+             switch (dbType)
+            {
+                case DbType.MySql:
+                    DBConnectMessage.Port = 3306;
+                    break;
+                case DbType.SqlServer:
+                    DBConnectMessage.Port = 1433;
+                    break;
+                case DbType.PostgreSQL:
+                    DBConnectMessage.Port = 5432;
+                    break;
+                case DbType.Oracle:
+                    DBConnectMessage.Port = 1521;
+                     break;
+                default:
+                    break;
+            }
+        }
+
         protected virtual void CloseDialog(string parameter)
         {
              ButtonResult result = ButtonResult.None;
@@ -66,10 +120,13 @@ namespace IndustrialTools.Modules.Content.ViewModels
             if (parameter?.ToLower() == "test")
             {
                 MessageBox.Show("dsf");
+                
             }
             else if (parameter?.ToLower() == "true")
             {
-                 result = ButtonResult.OK;
+
+                TypeMessage = DBConnectMessage.ConnectionName ;
+                result = ButtonResult.OK;
                  var parameters = new DialogParameters
                  {
                        { "ConnectionResult", Message },
@@ -109,6 +166,17 @@ namespace IndustrialTools.Modules.Content.ViewModels
             int result = 0;
             try
             {
+
+                CombboxList = new ObservableCollection<ComplexInfoModel>() {
+                  new ComplexInfoModel(){ Key=DbType.MySql,Text= DbType.MySql.ToString() },
+                  new ComplexInfoModel(){ Key = DbType.SqlServer, Text=DbType.SqlServer.ToString() },
+                  //new ComplexInfoModel(){ Key=DbType.Sqlite,Text=DbType.Sqlite.ToString() },
+                  new ComplexInfoModel(){ Key=DbType.Oracle,Text=DbType.Oracle.ToString() },
+                  new ComplexInfoModel(){ Key=DbType.PostgreSQL,Text=DbType.PostgreSQL.ToString() }
+
+                };
+                combboxItem = CombboxList[0];  // 默认选中第一个
+
                 //result = SugarDbFactory.New(MyConnection, DbType.MySql).Ado.ExecuteCommand("SELECT 1");
                 //result += SugarDbFactory.New(MsConnection, DbType.SqlServer).Ado.ExecuteCommand("SELECT 2");
                 //result += SugarDbFactory.New(PgConnection, DbType.PostgreSQL).Ado.ExecuteCommand("SELECT 3");
