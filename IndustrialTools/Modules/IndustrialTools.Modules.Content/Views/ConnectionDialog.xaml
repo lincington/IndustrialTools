@@ -13,10 +13,11 @@
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="30" >
-            <TabControl Grid.Column="1"  TabStripPlacement="Left" Cursor="IBeam">
+            <TabControl Grid.Column="1"  TabStripPlacement="Left" >
                 <TabItem Header="DB  Connection">
                     <Grid>
                         <!--<Separator Grid.Column="1" />-->
+                        
                         <Grid Grid.Column="2"  Margin="50,60,0,0" Cursor="">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3*"></ColumnDefinition>
@@ -50,7 +51,7 @@
                             <TextBlock Grid.Row="2"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >主机:</TextBlock>
                             <TextBox   Grid.Row="2"  Grid.Column="1"  Width="256"   Height="35"  Text="{Binding DBConnectMessage.Host}" HorizontalAlignment="Left"></TextBox>
 
-                            <TextBlock Grid.Row="3"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >端口:</TextBlock>
+                            <TextBlock Grid.Row="3"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >端口号:</TextBlock>
                             <TextBox  GotFocus="TextBox_GotFocus" Grid.Row="3"  Grid.Column="1"  Width="106"   Height="35"  Text="{Binding DBConnectMessage.Port , UpdateSourceTrigger=PropertyChanged}"    HorizontalAlignment="Left"></TextBox>
 
                             <TextBlock Grid.Row="4"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >用户名:</TextBlock>
@@ -60,22 +61,199 @@
                             <PasswordBox   Grid.Row="5"  Grid.Column="1"  Width="186"   Height="35"   HorizontalAlignment="Left"     local:PasswordBoxBindingHelper.PasswordContent="{Binding DBConnectMessage.Password,Mode=TwoWay}">
                             </PasswordBox>
                         </Grid>
+                   
                     </Grid>
                 </TabItem>
                           
                 <TabItem Header="Modbus  Connection">
-                    
+                    <Grid>
+                        <TabControl>
+                            <TabItem Header="ModbusRtu">
+                                <Grid Grid.Column="2"  Margin="50,60,0,0" Cursor="">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                                        <ColumnDefinition  Width="7*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >连接名称:</TextBlock>
+                                    <TextBox   Grid.Row="0"  Grid.Column="1" Text="{Binding DBConnectMessage.ConnectionName}" Width="256"   Height="35"   HorizontalAlignment="Left"></TextBox>
+
+                                    <TextBlock  Grid.Row="1"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >COM:</TextBlock>
+                                    <ComboBox   Grid.Row="1"  Grid.Column="1"  Width="256" FontSize="14"   Height="35" x:Name="ModbusRtu"  HorizontalAlignment="Left" SelectedIndex="0"
+                                        ItemsSource="{Binding CombboxList}"   SelectedItem="{Binding CombboxItem}" DisplayMemberPath="Text" SelectedValuePath="Key" >
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="SelectionChanged">
+                                                <i:InvokeCommandAction Command="{Binding ComboboxSelectionChangedCommand}"  CommandParameter="{Binding ElementName=COM, Path=SelectedItem}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </ComboBox>
+                                    <TextBlock Grid.Row="2"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >波特率:</TextBlock>
+                                    <ComboBox   Grid.Row="2"  Grid.Column="1"  Width="256"   Height="35"  Text="{Binding DBConnectMessage.Host}" HorizontalAlignment="Left"></ComboBox>
+
+                                    <TextBlock Grid.Row="3"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >数据位:</TextBlock>
+                                    <ComboBox  GotFocus="TextBox_GotFocus" Grid.Row="3"  Grid.Column="1"  Width="106"   Height="35"  Text="{Binding DBConnectMessage.Port , UpdateSourceTrigger=PropertyChanged}"    HorizontalAlignment="Left"></ComboBox>
+
+                                    <TextBlock Grid.Row="4"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >停止位:</TextBlock>
+                                    <ComboBox   Grid.Row="4"  Grid.Column="1"  Width="186"   Height="35"  Text="{Binding DBConnectMessage.UserName}"  HorizontalAlignment="Left"></ComboBox>
+
+                                    <TextBlock Grid.Row="5"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >奇偶校验:</TextBlock>
+                                    <ComboBox   Grid.Row="5"  Grid.Column="1"  Width="186"   Height="35"   HorizontalAlignment="Left"      ></ComboBox>
+                                </Grid>
+                             </TabItem>
+
+                            <TabItem Header="ModbusTcp">
+                                <Grid Grid.Column="2"  Margin="50,60,0,0" Cursor="">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                                        <ColumnDefinition  Width="7*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >连接名称:</TextBlock>
+                                    <TextBox   Grid.Row="0"  Grid.Column="1" Text="{Binding DBConnectMessage.ConnectionName}" Width="256"   Height="35"   HorizontalAlignment="Left"></TextBox>
+
+                                  
+                                    <TextBlock Grid.Row="1"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >主机:</TextBlock>
+                                    <TextBox   Grid.Row="1"  Grid.Column="1"  Width="256"   Height="35"  Text="{Binding DBConnectMessage.Host}" HorizontalAlignment="Left"></TextBox>
+
+                                    <TextBlock Grid.Row="2"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >端口号:</TextBlock>
+                                    <TextBox   Grid.Row="2"  Grid.Column="1"  Width="106"   Height="35"   GotFocus="TextBox_GotFocus" Text="{Binding DBConnectMessage.Port , UpdateSourceTrigger=PropertyChanged}"    HorizontalAlignment="Left"></TextBox>
+
+                                    <TextBlock Grid.Row="3"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >站号:</TextBlock>
+                                    <TextBox   Grid.Row="3"  Grid.Column="1"  Width="106"   Height="35"   GotFocus="TextBox_GotFocus" Text="{Binding DBConnectMessage.Port , UpdateSourceTrigger=PropertyChanged}"    HorizontalAlignment="Left"></TextBox>
+
+                                </Grid>
+
+                            </TabItem>
+                        </TabControl>
+                    </Grid>
                 </TabItem>
 
                 <TabItem Header="PLC  Connection">
+                    <Grid Grid.Column="2"  Margin="50,60,0,0" Cursor="">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                            <ColumnDefinition  Width="7*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >连接名称:</TextBlock>
+                        <TextBox   Grid.Row="0"  Grid.Column="1" Text="{Binding DBConnectMessage.ConnectionName}" Width="256"   Height="35"   HorizontalAlignment="Left"></TextBox>
+
+
+                        <TextBlock Grid.Row="1"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >主机:</TextBlock>
+                        <TextBox   Grid.Row="1"  Grid.Column="1"  Width="256"   Height="35"  Text="{Binding DBConnectMessage.Host}" HorizontalAlignment="Left"></TextBox>
+
+                        <TextBlock Grid.Row="2"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >端口号:</TextBlock>
+                        <TextBox   Grid.Row="2"  Grid.Column="1"  Width="106"   Height="35"   GotFocus="TextBox_GotFocus" Text="{Binding DBConnectMessage.Port , UpdateSourceTrigger=PropertyChanged}"    HorizontalAlignment="Left"></TextBox>
+
+                        <TextBlock Grid.Row="3"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >站号:</TextBlock>
+                        <TextBox   Grid.Row="3"  Grid.Column="1"  Width="106"   Height="35"   GotFocus="TextBox_GotFocus" Text="{Binding DBConnectMessage.Port , UpdateSourceTrigger=PropertyChanged}"    HorizontalAlignment="Left"></TextBox>
+
+                    </Grid>
 
                 </TabItem>
 
                 <TabItem Header="COM  Connection">
+                    <Grid Grid.Column="2"  Margin="50,60,0,0" Cursor="">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                            <ColumnDefinition  Width="7*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >连接名称:</TextBlock>
+                        <TextBox   Grid.Row="0"  Grid.Column="1" Text="{Binding DBConnectMessage.ConnectionName}" Width="256"   Height="35"   HorizontalAlignment="Left"></TextBox>
+
+                        <TextBlock  Grid.Row="1"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >COM:</TextBlock>
+                        <ComboBox   Grid.Row="1"  Grid.Column="1"  Width="256" FontSize="14"   Height="35" x:Name="COM"  HorizontalAlignment="Left" SelectedIndex="0"
+                   ItemsSource="{Binding CombboxList}"   SelectedItem="{Binding CombboxItem}" DisplayMemberPath="Text" SelectedValuePath="Key" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding ComboboxSelectionChangedCommand}"  CommandParameter="{Binding ElementName=COM, Path=SelectedItem}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ComboBox>
+                        <TextBlock Grid.Row="2"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >波特率:</TextBlock>
+                        <ComboBox   Grid.Row="2"  Grid.Column="1"  Width="256"   Height="35"  Text="{Binding DBConnectMessage.Host}" HorizontalAlignment="Left"></ComboBox>
+
+                        <TextBlock Grid.Row="3"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >数据位:</TextBlock>
+                        <ComboBox  Grid.Row="3"  Grid.Column="1"  Width="106"   Height="35"  Text="{Binding DBConnectMessage.Port , UpdateSourceTrigger=PropertyChanged}"    HorizontalAlignment="Left"></ComboBox>
+
+                        <TextBlock Grid.Row="4"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >停止位:</TextBlock>
+                        <ComboBox   Grid.Row="4"  Grid.Column="1"  Width="186"   Height="35"  Text="{Binding DBConnectMessage.UserName}"  HorizontalAlignment="Left"></ComboBox>
+
+                        <TextBlock Grid.Row="5"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >奇偶校验:</TextBlock>
+                        <ComboBox   Grid.Row="5"  Grid.Column="1"  Width="186"   Height="35"   HorizontalAlignment="Left"      ></ComboBox>
+                    </Grid>
 
                 </TabItem>
 
                 <TabItem Header="TCP/UDP  Connection">
+                    <Grid Grid.Column="2"  Margin="50,60,0,0" Cursor="">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                            <ColumnDefinition  Width="7*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >连接名称:</TextBlock>
+                        <TextBox   Grid.Row="0"  Grid.Column="1" Text="{Binding DBConnectMessage.ConnectionName}" Width="256"   Height="35"   HorizontalAlignment="Left"></TextBox>
+
+
+                        <TextBlock Grid.Row="1"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >主机:</TextBlock>
+                        <TextBox   Grid.Row="1"  Grid.Column="1"  Width="256"   Height="35"  Text="{Binding DBConnectMessage.Host}" HorizontalAlignment="Left"></TextBox>
+
+                        <TextBlock Grid.Row="2"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >端口号:</TextBlock>
+                        <TextBox   Grid.Row="2"  Grid.Column="1"  Width="106"   Height="35"   GotFocus="TextBox_GotFocus" Text="{Binding DBConnectMessage.Port , UpdateSourceTrigger=PropertyChanged}"    HorizontalAlignment="Left"></TextBox>
+
+                    </Grid>
 
                 </TabItem>
 

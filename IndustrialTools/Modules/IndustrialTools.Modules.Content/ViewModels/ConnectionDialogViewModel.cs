@@ -39,6 +39,14 @@ namespace IndustrialTools.Modules.Content.ViewModels
             set { SetProperty(ref _DBConnectmessage, value); }
         }
 
+        private ModbusTCPConnection _modbusTCPConnection = new ModbusTCPConnection();
+        public ModbusTCPConnection ModbusTCPConnection
+        {
+            get { return _modbusTCPConnection; }
+            set { SetProperty(ref _modbusTCPConnection, value); }
+        }
+
+
 
         private ComplexInfoModel combboxItem;
         /// <summary>
@@ -94,16 +102,22 @@ namespace IndustrialTools.Modules.Content.ViewModels
         {
             ComplexInfoModel dd = parameter  as ComplexInfoModel;
             DbType dbType = dd.Key;
-             switch (dbType)
+            switch (dbType)
             {
                 case DbType.MySql:
                     DBConnectMessage.Port = 3306;
+                    DBConnectMessage.UserName = "root";
+
                     break;
                 case DbType.SqlServer:
                     DBConnectMessage.Port = 1433;
+                    DBConnectMessage.UserName = "sa";
+
                     break;
                 case DbType.PostgreSQL:
                     DBConnectMessage.Port = 5432;
+                    DBConnectMessage.UserName = "postgres";
+
                     break;
                 case DbType.Oracle:
                     DBConnectMessage.Port = 1521;
@@ -116,6 +130,9 @@ namespace IndustrialTools.Modules.Content.ViewModels
         protected virtual void CloseDialog(string parameter)
         {
              ButtonResult result = ButtonResult.None;
+            string MyConnection = $"Data Source ={DBConnectMessage.Host}; Port={DBConnectMessage.Port};User ID ={DBConnectMessage.UserName}; Password={DBConnectMessage.Password};AllowPublicKeyRetrieval=True;Charset=utf8;SslMode=None;Max pool size=10";
+            string MsConnection = $"server={DBConnectMessage.Host},{DBConnectMessage.Port};uid={DBConnectMessage.UserName};pwd={DBConnectMessage.Password};Encrypt=True;TrustServerCertificate=True;";
+            string PgConnection = $"HOST={DBConnectMessage.Host};PORT={DBConnectMessage.Port};USER ID={DBConnectMessage.UserName};PASSWORD={DBConnectMessage.Password}";
 
             if (parameter?.ToLower() == "test")
             {
@@ -124,7 +141,6 @@ namespace IndustrialTools.Modules.Content.ViewModels
             }
             else if (parameter?.ToLower() == "true")
             {
-
                 TypeMessage = DBConnectMessage.ConnectionName ;
                 result = ButtonResult.OK;
                  var parameters = new DialogParameters
@@ -158,11 +174,7 @@ namespace IndustrialTools.Modules.Content.ViewModels
 
         public virtual void OnDialogOpened(IDialogParameters parameters)
         {
-            string MyConnection = "Data Source =192.168.1.70; Port=3306;User ID =root; Password=201015;Initial Catalog =stock;AllowPublicKeyRetrieval=True;Charset=utf8;SslMode=None;Max pool size=10";
-            string MsConnection = "server=192.168.1.70,1433;uid=sa;pwd=Zhouenlai@305;database=stock;Encrypt=True;TrustServerCertificate=True;";
-            string PgConnection = "HOST=192.168.1.70;PORT=5432;USER ID=postgres;PASSWORD=201015;DATABASE=stock";
-            //string OrConnection = "Data Source=192.168.1.70/orcl;User ID=system;Password=haha";
-
+ 
             int result = 0;
             try
             {
@@ -171,12 +183,11 @@ namespace IndustrialTools.Modules.Content.ViewModels
                   new ComplexInfoModel(){ Key=DbType.MySql,Text= DbType.MySql.ToString() },
                   new ComplexInfoModel(){ Key = DbType.SqlServer, Text=DbType.SqlServer.ToString() },
                   //new ComplexInfoModel(){ Key=DbType.Sqlite,Text=DbType.Sqlite.ToString() },
-                  new ComplexInfoModel(){ Key=DbType.Oracle,Text=DbType.Oracle.ToString() },
+                  //new ComplexInfoModel(){ Key=DbType.Oracle,Text=DbType.Oracle.ToString() },
                   new ComplexInfoModel(){ Key=DbType.PostgreSQL,Text=DbType.PostgreSQL.ToString() }
 
                 };
                 combboxItem = CombboxList[0];  // 默认选中第一个
-
                 //result = SugarDbFactory.New(MyConnection, DbType.MySql).Ado.ExecuteCommand("SELECT 1");
                 //result += SugarDbFactory.New(MsConnection, DbType.SqlServer).Ado.ExecuteCommand("SELECT 2");
                 //result += SugarDbFactory.New(PgConnection, DbType.PostgreSQL).Ado.ExecuteCommand("SELECT 3");

@@ -12,84 +12,108 @@ namespace IndustrialTools.Common
 {
     public class DapperHelper
     {
-        private static string ConnectionString = "Data Source=192.168.1.70;User Id=sa;Password=201015;Initial Catalog=Stock;TrustServerCertificate=true;Pooling=true;Min Pool Size=1";
-        private static string ConnString = "server=192.168.1.70;userid=root;pwd=201015;port=3306;database=stock;SslMode=none";
-        private static string PostgreSQLConnection = "PORT=5432;DATABASE=stock;HOST=192.168.1.70;PASSWORD=201015;USER ID=postgres";
-        private static string Connection = "Data Source = 192.168.1.70; Port=3306;User ID = root; Password=201015;Initial Catalog =stock; Charset=utf8;SslMode=none;Max pool size=10";
+      
+        string MysqlDB = "SELECT SCHEMA_NAME as DBNAME FROM information_schema.SCHEMATA;";
+        string SQLServerDB = "SELECT  name as DBNAME FROM sys.databases;";
+        string PostgreSQLDB = "SELECT   datname as DBNAME FROM pg_database;";
 
-        string MysqlTable = "SHOW TABLES;";
-        string SQLServerTable = "SELECT name FROM sys.tables;";
-        string PostgreSQLTable = "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';\r\n";
-        string SQLiteTable = "SELECT name FROM sqlite_master WHERE type='table';";
+        string MysqlTable      = "SHOW TABLES;";
+        string SQLServerTable  = "SELECT name FROM sys.tables;";
+        string PostgreSQLTable = "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';";
+
+
+
+        public bool IsConnected { get; set; } = false;
+
+        public static string ConnectionString { get; set; } = "";
+        public bool IsOpen(string ConnectionString , SqlSugar.DbType dbType)
+        {
+            switch (dbType)
+            {
+                case SqlSugar.DbType.MySql:
+                    // MySQL
+                    using (IDbConnection db = new MySqlConnection(ConnectionString))
+                    {
+                        try
+                        {
+                            db.Open();
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+                    break;
+                case SqlSugar.DbType.SqlServer:
+                    // SQL Server
+                    using (IDbConnection db = new SqlConnection(ConnectionString))
+                    {
+                        try
+                        {
+                            db.Open();
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+                    break;
+                case SqlSugar.DbType.PostgreSQL:
+                    // PostgreSQL
+                    using (IDbConnection db = new NpgsqlConnection(ConnectionString))
+                    {
+                        try
+                        {
+                            db.Open();
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+                    break;
+                case SqlSugar.DbType.Oracle:
+                    // Oracle
+                    using (IDbConnection db = new OracleConnection(ConnectionString))
+                    {
+                        try
+                        {
+                            db.Open();
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+
+                    break;
+
+                case SqlSugar.DbType.Sqlite:
+                    // SQLite
+                    using (IDbConnection db = new SQLiteConnection("Data Source=TestDb.sqlite;Version=3;"))
+                    {
+                        try
+                        {
+                            db.Open();
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+
+                    break;
+                default:
+                    break;
+            }
+            return IsConnected;
+        }
 
         public DapperHelper()
         {
 
-            // SQL Server
-            using (IDbConnection db = new SqlConnection("Server=localhost;Database=TestDb;User Id=sa;Password=your_password;"))
-            {
-                try
-                {
-                    db.Open();
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            }
-
-            // MySQL
-            using (IDbConnection db = new MySqlConnection("Server=localhost;Database=TestDb;User=root;Password=your_password;"))
-            {
-                try
-                {
-                    db.Open();
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            }
-
-            // PostgreSQL
-            using (IDbConnection db = new NpgsqlConnection("Host=localhost;Database=TestDb;Username=postgres;Password=your_password"))
-            {
-                try
-                {
-                    db.Open();
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            }
-
-            // SQLite
-            using (IDbConnection db = new SQLiteConnection("Data Source=TestDb.sqlite;Version=3;"))
-            {
-                try
-                {
-                    db.Open();
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            }
-
-            // Oracle
-            using (IDbConnection db = new OracleConnection("User Id=your_user;Password=your_password;Data Source=localhost:1521/xe;"))
-            {
-                try
-                {
-                    db.Open();
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            }
-        }
+         
+         }
 
 
         /// <summary>

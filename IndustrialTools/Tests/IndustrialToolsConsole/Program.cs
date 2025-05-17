@@ -12,6 +12,16 @@ namespace IndustrialToolsConsole
             string MsConnection = "server=192.168.1.70,1433;uid=sa;pwd=Zhouenlai@305;database=stock;Encrypt=True;TrustServerCertificate=True;";
             string PgConnection = "HOST=192.168.1.70;PORT=5432;USER ID=postgres;PASSWORD=201015;DATABASE=stock";
             //string OrConnection = "Data Source=192.168.1.70/orcl;User ID=system;Password=haha";
+            ComplexInfoModel complexInfoModel = new ComplexInfoModel()
+            {
+                Key = DbType.MySql,
+                Text = "MySql"
+            };  
+
+            string interpolated = $"Welcome, {complexInfoModel.Text}!";
+
+
+            Console.WriteLine(interpolated);
 
             int result = 0;
             try
@@ -26,5 +36,11 @@ namespace IndustrialToolsConsole
                 LogHelper.LogExceptionMessage(ex);
             }
         }
+    }
+
+    public class ComplexInfoModel
+    {
+        public DbType Key { get; set; }
+        public string Text { get; set; }
     }
 }

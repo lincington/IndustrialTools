@@ -30,4 +30,7 @@ namespace IndustrialTools.Common.Models
             set { SetProperty(ref text, value); }
         }
     }
+
+
+
 }
