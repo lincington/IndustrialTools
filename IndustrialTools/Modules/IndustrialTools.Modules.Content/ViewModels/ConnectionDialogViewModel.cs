@@ -1,15 +1,14 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Dialogs;
-using IndustrialTools.Common;
+
 using SqlSugar;
 using System;
 using Microsoft.IdentityModel.Logging;
 using System.Windows;
 using IndustrialTools.Common.Models;
-using Npgsql.Replication.PgOutput.Messages;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
+
 
 namespace IndustrialTools.Modules.Content.ViewModels 
 {
@@ -136,7 +135,7 @@ namespace IndustrialTools.Modules.Content.ViewModels
 
             if (parameter?.ToLower() == "test")
             {
-                MessageBox.Show("dsf");
+                MessageBox.Show("Connection  Fail");
                 
             }
             else if (parameter?.ToLower() == "true")

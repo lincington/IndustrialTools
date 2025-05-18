@@ -10,18 +10,25 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace IndustrialTools.Common
 {
+
+    public interface IDapperFactory
+    {
+
+    }
+    public class DapperFactory : IDapperFactory
+    {
+
+    }
     public class DapperHelper
     {
       
-        string MysqlDB = "SELECT SCHEMA_NAME as DBNAME FROM information_schema.SCHEMATA;";
-        string SQLServerDB = "SELECT  name as DBNAME FROM sys.databases;";
+        string MysqlDB      = "SELECT SCHEMA_NAME as DBNAME FROM information_schema.SCHEMATA;";
+        string SQLServerDB  = "SELECT  name as DBNAME FROM sys.databases;";
         string PostgreSQLDB = "SELECT   datname as DBNAME FROM pg_database;";
 
         string MysqlTable      = "SHOW TABLES;";
         string SQLServerTable  = "SELECT name FROM sys.tables;";
         string PostgreSQLTable = "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';";
-
-
 
         public bool IsConnected { get; set; } = false;
 

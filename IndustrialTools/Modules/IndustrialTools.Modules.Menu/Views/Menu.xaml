@@ -10,32 +10,21 @@
              prism:ViewModelLocator.AutoWireViewModel="True" >
     <Grid>
         <Menu>
-            <MenuItem Header="File">
-                <MenuItem Header="New" />
-                <MenuItem Header="New window" />
-                <MenuItem Header="Open..." />
-                <MenuItem Header="Save" />
-                <MenuItem Header="Save As..." />
-                <Separator />
-                <MenuItem Header="Exit" />
+            <MenuItem Header="Vision">
+                <MenuItem Header="OpenCV"></MenuItem>
+                <MenuItem Header="VisionPro"></MenuItem>
+                <MenuItem Header="Halcon"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Edit">
-                <MenuItem Header="Undo" />
-                <Separator />
-                <MenuItem Header="Cut" />
-                <MenuItem Header="Copy" />
-                <MenuItem Header="Paste" />
-                <MenuItem IsEnabled="False" />
-                <Separator />
-                <MenuItem Header="Search with browser" />
-                <MenuItem Header="Find..." />
-                <MenuItem Header="Find Next" />
-                <Separator />
-                <MenuItem Header="Select All" />
+            <MenuItem Header="Motion">
+   
             </MenuItem>
             <MenuItem Header="Connection"  Command="{Binding ApplicationCommands.Connection}">
                
            </MenuItem>
+
+            <MenuItem Header="Build Server">
+
+            </MenuItem>
         </Menu>
     </Grid>
 </UserControl>
