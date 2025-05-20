@@ -25,6 +25,11 @@
             <MenuItem Header="Build Server">
 
             </MenuItem>
+
+            <MenuItem Header="Help">
+                <MenuItem Header="Welcome" Command="{Binding ApplicationCommands.Welcome}"></MenuItem>
+                <MenuItem Header="About"   Command="{Binding ApplicationCommands.About}"></MenuItem>
+            </MenuItem>
         </Menu>
     </Grid>
 </UserControl>

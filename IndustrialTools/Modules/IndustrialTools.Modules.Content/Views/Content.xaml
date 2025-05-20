@@ -9,7 +9,7 @@
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True" >
     <Grid>
-        <Button HorizontalAlignment="Center" Command="{Binding UpdateCommand}"  Visibility="Collapsed" Content="Connection" Margin="5"/>
+        <Button HorizontalAlignment="Center" Command="{Binding ConnectionCommand}"  Visibility="Collapsed" Content="Connection" Margin="5"/>
         <Grid>
             <!-- 定义两列 -->
             <Grid.ColumnDefinitions>

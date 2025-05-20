@@ -106,17 +106,14 @@ namespace IndustrialTools.Modules.Content.ViewModels
                 case DbType.MySql:
                     DBConnectMessage.Port = 3306;
                     DBConnectMessage.UserName = "root";
-
                     break;
                 case DbType.SqlServer:
                     DBConnectMessage.Port = 1433;
                     DBConnectMessage.UserName = "sa";
-
                     break;
                 case DbType.PostgreSQL:
                     DBConnectMessage.Port = 5432;
                     DBConnectMessage.UserName = "postgres";
-
                     break;
                 case DbType.Oracle:
                     DBConnectMessage.Port = 1521;
@@ -128,7 +125,7 @@ namespace IndustrialTools.Modules.Content.ViewModels
 
         protected virtual void CloseDialog(string parameter)
         {
-             ButtonResult result = ButtonResult.None;
+            ButtonResult result = ButtonResult.None;
             string MyConnection = $"Data Source ={DBConnectMessage.Host}; Port={DBConnectMessage.Port};User ID ={DBConnectMessage.UserName}; Password={DBConnectMessage.Password};AllowPublicKeyRetrieval=True;Charset=utf8;SslMode=None;Max pool size=10";
             string MsConnection = $"server={DBConnectMessage.Host},{DBConnectMessage.Port};uid={DBConnectMessage.UserName};pwd={DBConnectMessage.Password};Encrypt=True;TrustServerCertificate=True;";
             string PgConnection = $"HOST={DBConnectMessage.Host};PORT={DBConnectMessage.Port};USER ID={DBConnectMessage.UserName};PASSWORD={DBConnectMessage.Password}";
@@ -136,7 +133,6 @@ namespace IndustrialTools.Modules.Content.ViewModels
             if (parameter?.ToLower() == "test")
             {
                 MessageBox.Show("Connection  Fail");
-                
             }
             else if (parameter?.ToLower() == "true")
             {
@@ -173,7 +169,6 @@ namespace IndustrialTools.Modules.Content.ViewModels
 
         public virtual void OnDialogOpened(IDialogParameters parameters)
         {
- 
             int result = 0;
             try
             {

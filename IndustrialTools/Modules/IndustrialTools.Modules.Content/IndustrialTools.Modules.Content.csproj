@@ -4,13 +4,16 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Dialogs\**" />
+    <EmbeddedResource Remove="Dialogs\**" />
+    <None Remove="Dialogs\**" />
+    <Page Remove="Dialogs\**" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
     <PackageReference Include="Prism.Wpf" Version="9.0.537" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\IndustrialTools.Core\IndustrialTools.Core.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dialogs\" />
   </ItemGroup>
 </Project>

@@ -33,7 +33,12 @@ namespace IndustrialTools.Modules.Content.ViewModels
 
         private IDialogService _dialogService;
 
-        public DelegateCommand UpdateCommand { get; private set; }
+        public DelegateCommand ConnectionCommand { get; private set; }
+        
+        
+        public DelegateCommand WelcomeCommand { get; private set; }
+        public DelegateCommand AboutCommand  { get; private set; }
+
 
         public ObservableCollection<TreeNode> Nodes { get; set; }
 
@@ -43,9 +48,14 @@ namespace IndustrialTools.Modules.Content.ViewModels
             _dialogService = dialogService;
             _regionManager = regionManager;
 
-            UpdateCommand = new DelegateCommand(Update);
-            _applicationCommands.Connection.RegisterCommand(UpdateCommand);
+            ConnectionCommand = new DelegateCommand(Connection);
 
+            WelcomeCommand = new DelegateCommand(Welcome);
+            AboutCommand = new DelegateCommand(About);
+
+            _applicationCommands.Connection.RegisterCommand(ConnectionCommand);
+            _applicationCommands.Welcome.RegisterCommand(WelcomeCommand);
+            _applicationCommands.About.RegisterCommand(AboutCommand);
             Nodes = new ObservableCollection<TreeNode>();
             //{
             //    new TreeNode("Root 1")
@@ -66,7 +76,31 @@ namespace IndustrialTools.Modules.Content.ViewModels
             //};
         }
 
-        private void Update()
+        public void Welcome()
+        {
+            _dialogService.ShowDialog("HelpDialog", new DialogParameters($"message={Message}"), r =>
+            {
+                if (r.Result == ButtonResult.None)
+                    Title = "Result is None";
+                else if (r.Result == ButtonResult.OK)
+                {
+                    Title = "Result is OK";
+                    Title = r.Parameters.GetValue<string>("ConnectionResult");
+                    string d = r.Parameters.GetValue<string>("ConnectionType");
+                    Nodes.Add(new TreeNode(d));
+                    _regionManager.RequestNavigate("MidContentRegion", Title);
+                }
+                else if (r.Result == ButtonResult.Cancel)
+                    Title = "Result is Cancel";
+                else
+                    Title = "I Don't know what you did!?";
+            });
+        }
+        public void About()
+        {
+
+        }
+        private void Connection()
         {
             _dialogService.ShowDialog("ConnectionDialog", new DialogParameters($"message={Message}"), r =>
             {

@@ -31,6 +31,7 @@ namespace IndustrialTools
             containerRegistry.RegisterSingleton<IApplicationCommands, ApplicationCommands>();
 
             containerRegistry.RegisterDialog<ConnectionDialog, ConnectionDialogViewModel>();
+            containerRegistry.RegisterDialog<HelpDialog, HelpDialogViewModel>();
 
         }
 
