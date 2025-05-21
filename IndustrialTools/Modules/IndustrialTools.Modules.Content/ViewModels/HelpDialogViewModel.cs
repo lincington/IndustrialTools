@@ -8,7 +8,7 @@ namespace IndustrialTools.Modules.Content.ViewModels
     public class HelpDialogViewModel : BindableBase, IDialogAware
     {
 
-        private string _title = "Connection";
+        private string _title = "Welcome";
         public string Title
         {
             get { return _title; }
@@ -27,7 +27,8 @@ namespace IndustrialTools.Modules.Content.ViewModels
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
-          
+            Title = parameters.GetValue<string>("message");
+
         }
     }
 }

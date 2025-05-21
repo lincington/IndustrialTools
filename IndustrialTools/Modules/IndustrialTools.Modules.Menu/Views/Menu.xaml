@@ -18,7 +18,7 @@
             <MenuItem Header="Motion">
    
             </MenuItem>
-            <MenuItem Header="Connection"  Command="{Binding ApplicationCommands.Connection}">
+            <MenuItem Header="Connection"  Command="{Binding ApplicationCommands.Connection}" CommandParameter="">
                
            </MenuItem>
 
@@ -27,8 +27,8 @@
             </MenuItem>
 
             <MenuItem Header="Help">
-                <MenuItem Header="Welcome" Command="{Binding ApplicationCommands.Welcome}"></MenuItem>
-                <MenuItem Header="About"   Command="{Binding ApplicationCommands.About}"></MenuItem>
+                <MenuItem Header="Welcome" Command="{Binding ApplicationCommands.Help}" CommandParameter="Welcome"></MenuItem>
+                <MenuItem Header="About"   Command="{Binding ApplicationCommands.Help}" CommandParameter="About"></MenuItem>
             </MenuItem>
         </Menu>
     </Grid>

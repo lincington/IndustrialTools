@@ -55,19 +55,30 @@ namespace IndustrialTools.Modules.Content.ViewModels
         {
             get { return combboxItem; }
             set { SetProperty(ref combboxItem, value); }
-         }
+        }
 
         private ObservableCollection<ComplexInfoModel> combboxList;
         /// <summary>
         /// 下拉框列表
         /// </summary>
-        public ObservableCollection<ComplexInfoModel> CombboxList
+        public ObservableCollection<ComplexInfoModel> DBSQLComList
         {
             get { return combboxList; }
             set { SetProperty(ref combboxList, value); }
          }
 
+        private ObservableCollection<ComplexInfoModel> NocombboxList;
+        /// <summary>
+        /// 下拉框列表
+        /// </summary>
+        public ObservableCollection<ComplexInfoModel> NoSQLComList
+        {
+            get { return NocombboxList; }
+            set { SetProperty(ref NocombboxList, value); }
+        }
 
+
+        
 
         private string _Typemessage = "DBConnection";
         public string TypeMessage
@@ -173,19 +184,15 @@ namespace IndustrialTools.Modules.Content.ViewModels
             try
             {
 
-                CombboxList = new ObservableCollection<ComplexInfoModel>() {
+                DBSQLComList = new ObservableCollection<ComplexInfoModel>() {
                   new ComplexInfoModel(){ Key=DbType.MySql,Text= DbType.MySql.ToString() },
                   new ComplexInfoModel(){ Key = DbType.SqlServer, Text=DbType.SqlServer.ToString() },
                   //new ComplexInfoModel(){ Key=DbType.Sqlite,Text=DbType.Sqlite.ToString() },
                   //new ComplexInfoModel(){ Key=DbType.Oracle,Text=DbType.Oracle.ToString() },
                   new ComplexInfoModel(){ Key=DbType.PostgreSQL,Text=DbType.PostgreSQL.ToString() }
-
                 };
-                combboxItem = CombboxList[0];  // 默认选中第一个
-                //result = SugarDbFactory.New(MyConnection, DbType.MySql).Ado.ExecuteCommand("SELECT 1");
-                //result += SugarDbFactory.New(MsConnection, DbType.SqlServer).Ado.ExecuteCommand("SELECT 2");
-                //result += SugarDbFactory.New(PgConnection, DbType.PostgreSQL).Ado.ExecuteCommand("SELECT 3");
-                ////result += SugarDbFactory.New(OrConnection, DbType.OceanBase).Ado.ExecuteCommand("SELECT 4");
+                combboxItem = DBSQLComList[0];  // 默认选中第一个
+             
             }
             catch (Exception ex )
             {

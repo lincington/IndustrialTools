@@ -36,9 +36,8 @@ namespace IndustrialTools.Modules.Content.ViewModels
         public DelegateCommand ConnectionCommand { get; private set; }
         
         
-        public DelegateCommand WelcomeCommand { get; private set; }
-        public DelegateCommand AboutCommand  { get; private set; }
-
+        public DelegateCommand<object> HelpCommand  { get; private set; }
+     
 
         public ObservableCollection<TreeNode> Nodes { get; set; }
 
@@ -50,12 +49,12 @@ namespace IndustrialTools.Modules.Content.ViewModels
 
             ConnectionCommand = new DelegateCommand(Connection);
 
-            WelcomeCommand = new DelegateCommand(Welcome);
-            AboutCommand = new DelegateCommand(About);
+            HelpCommand = new DelegateCommand<object>(Help);
+           
 
             _applicationCommands.Connection.RegisterCommand(ConnectionCommand);
-            _applicationCommands.Welcome.RegisterCommand(WelcomeCommand);
-            _applicationCommands.About.RegisterCommand(AboutCommand);
+            _applicationCommands.Help.RegisterCommand(HelpCommand);
+        
             Nodes = new ObservableCollection<TreeNode>();
             //{
             //    new TreeNode("Root 1")
@@ -75,10 +74,23 @@ namespace IndustrialTools.Modules.Content.ViewModels
             //    new TreeNode("Root 2")         
             //};
         }
+        public  void Help(object ob)
+        {
+            string d = ob.ToString();
 
+            if (d== "Welcome")
+            {
+                Welcome();
+            }
+            else
+            {
+                About();
+            }
+
+        }
         public void Welcome()
         {
-            _dialogService.ShowDialog("HelpDialog", new DialogParameters($"message={Message}"), r =>
+            _dialogService.ShowDialog("HelpDialog", new DialogParameters($"message=Welcome"), r =>
             {
                 if (r.Result == ButtonResult.None)
                     Title = "Result is None";
@@ -98,7 +110,23 @@ namespace IndustrialTools.Modules.Content.ViewModels
         }
         public void About()
         {
-
+            _dialogService.ShowDialog("HelpDialog", new DialogParameters($"message=About"), r =>
+            {
+                if (r.Result == ButtonResult.None)
+                    Title = "Result is None";
+                else if (r.Result == ButtonResult.OK)
+                {
+                    Title = "Result is OK";
+                    Title = r.Parameters.GetValue<string>("ConnectionResult");
+                    string d = r.Parameters.GetValue<string>("ConnectionType");
+                    Nodes.Add(new TreeNode(d));
+                    _regionManager.RequestNavigate("MidContentRegion", Title);
+                }
+                else if (r.Result == ButtonResult.Cancel)
+                    Title = "Result is Cancel";
+                else
+                    Title = "I Don't know what you did!?";
+            });
         }
         private void Connection()
         {
