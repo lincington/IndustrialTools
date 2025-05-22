@@ -33,7 +33,7 @@ namespace IndustrialTools.Modules.Content.ViewModels
 
         private IDialogService _dialogService;
 
-        public DelegateCommand ConnectionCommand { get; private set; }
+        public DelegateCommand<object> ConnectionCommand { get; private set; }
         
         
         public DelegateCommand<object> HelpCommand  { get; private set; }
@@ -47,7 +47,7 @@ namespace IndustrialTools.Modules.Content.ViewModels
             _dialogService = dialogService;
             _regionManager = regionManager;
 
-            ConnectionCommand = new DelegateCommand(Connection);
+            ConnectionCommand = new DelegateCommand<object>(Connection);
 
             HelpCommand = new DelegateCommand<object>(Help);
            
@@ -128,8 +128,9 @@ namespace IndustrialTools.Modules.Content.ViewModels
                     Title = "I Don't know what you did!?";
             });
         }
-        private void Connection()
+        private void Connection(object ob )
         {
+            Message = ob.ToString();
             _dialogService.ShowDialog("ConnectionDialog", new DialogParameters($"message={Message}"), r =>
             {
                 if (r.Result == ButtonResult.None)

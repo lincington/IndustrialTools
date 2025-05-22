@@ -43,7 +43,7 @@
                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
 
             <!-- 右侧控件 -->
-            <Border Grid.Column="2" Background="LightGreen">
+            <Border Grid.Column="2" Background="White">
                 <ContentControl prism:RegionManager.RegionName="MidContentRegion" />
             </Border>
         </Grid>

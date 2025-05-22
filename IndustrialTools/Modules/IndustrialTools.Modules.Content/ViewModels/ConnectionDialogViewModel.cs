@@ -180,6 +180,8 @@ namespace IndustrialTools.Modules.Content.ViewModels
 
         public virtual void OnDialogOpened(IDialogParameters parameters)
         {
+
+            Title = parameters.GetValue<string>("message");
             int result = 0;
             try
             {

@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:IndustrialTools.Modules.Menu.Views"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:core="clr-namespace:IndustrialTools.Common.Models;assembly=IndustrialTools.Common"
              mc:Ignorable="d"   
              d:DesignHeight="300" d:DesignWidth="300"
              xmlns:prism="http://prismlibrary.com/"
@@ -18,9 +19,24 @@
             <MenuItem Header="Motion">
    
             </MenuItem>
-            <MenuItem Header="Connection"  Command="{Binding ApplicationCommands.Connection}" CommandParameter="">
-               
-           </MenuItem>
+            <!--<MenuItem Header="Connection"  Command="{Binding ApplicationCommands.Connection}" >
+              
+            </MenuItem>-->
+
+            <MenuItem Header="Connection" ItemsSource="{Binding MenuItems}" >
+                <MenuItem.ItemContainerStyle>
+                    <Style TargetType="MenuItem">
+                        <Setter Property="Header" Value="{Binding Header}"/>
+                        <Setter Property="Command" Value="{Binding Command}"/>
+                        <Setter Property="CommandParameter" Value="{Binding CommandParameter}"/>
+                    </Style>
+                </MenuItem.ItemContainerStyle>
+                <MenuItem.Resources>
+                    <HierarchicalDataTemplate  DataType="{x:Type core:MenuItemModel}"   ItemsSource="{Binding Children}">
+                        <TextBlock Text="{Binding Header}"/>
+                    </HierarchicalDataTemplate>
+                </MenuItem.Resources>
+            </MenuItem>
 
             <MenuItem Header="Build Server">
 
@@ -30,6 +46,7 @@
                 <MenuItem Header="Welcome" Command="{Binding ApplicationCommands.Help}" CommandParameter="Welcome"></MenuItem>
                 <MenuItem Header="About"   Command="{Binding ApplicationCommands.Help}" CommandParameter="About"></MenuItem>
             </MenuItem>
+ 
         </Menu>
     </Grid>
 </UserControl>
