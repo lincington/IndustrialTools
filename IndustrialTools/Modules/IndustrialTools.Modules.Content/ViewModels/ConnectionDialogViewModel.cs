@@ -47,31 +47,31 @@ namespace IndustrialTools.Modules.Content.ViewModels
 
 
 
-        private ComplexInfoModel combboxItem;
+        private TreeDataModels combboxItem;
         /// <summary>
         /// 下拉框选中信息
         /// </summary>
-        public ComplexInfoModel CombboxItem
+        public TreeDataModels CombboxItem
         {
             get { return combboxItem; }
             set { SetProperty(ref combboxItem, value); }
         }
 
-        private ObservableCollection<ComplexInfoModel> combboxList;
+        private ObservableCollection<TreeDataModels> combboxList;
         /// <summary>
         /// 下拉框列表
         /// </summary>
-        public ObservableCollection<ComplexInfoModel> DBSQLComList
+        public ObservableCollection<TreeDataModels> DBSQLComList
         {
             get { return combboxList; }
             set { SetProperty(ref combboxList, value); }
          }
 
-        private ObservableCollection<ComplexInfoModel> NocombboxList;
+        private ObservableCollection<TreeDataModels> NocombboxList;
         /// <summary>
         /// 下拉框列表
         /// </summary>
-        public ObservableCollection<ComplexInfoModel> NoSQLComList
+        public ObservableCollection<TreeDataModels> NoSQLComList
         {
             get { return NocombboxList; }
             set { SetProperty(ref NocombboxList, value); }
@@ -110,7 +110,7 @@ namespace IndustrialTools.Modules.Content.ViewModels
 
         protected virtual void ComboboxSelectionChangedDialog(object parameter)
         {
-            ComplexInfoModel dd = parameter  as ComplexInfoModel;
+            TreeDataModels dd = parameter  as TreeDataModels;
             DbType dbType = dd.Key;
             switch (dbType)
             {
@@ -186,12 +186,12 @@ namespace IndustrialTools.Modules.Content.ViewModels
             try
             {
 
-                DBSQLComList = new ObservableCollection<ComplexInfoModel>() {
-                  new ComplexInfoModel(){ Key=DbType.MySql,Text= DbType.MySql.ToString() },
-                  new ComplexInfoModel(){ Key = DbType.SqlServer, Text=DbType.SqlServer.ToString() },
+                DBSQLComList = new ObservableCollection<TreeDataModels>() {
+                  new TreeDataModels(){ Key=DbType.MySql,Text= DbType.MySql.ToString() },
+                  new TreeDataModels(){ Key = DbType.SqlServer, Text=DbType.SqlServer.ToString() },
                   //new ComplexInfoModel(){ Key=DbType.Sqlite,Text=DbType.Sqlite.ToString() },
                   //new ComplexInfoModel(){ Key=DbType.Oracle,Text=DbType.Oracle.ToString() },
-                  new ComplexInfoModel(){ Key=DbType.PostgreSQL,Text=DbType.PostgreSQL.ToString() }
+                  new TreeDataModels(){ Key=DbType.PostgreSQL,Text=DbType.PostgreSQL.ToString() }
                 };
                 combboxItem = DBSQLComList[0];  // 默认选中第一个
              

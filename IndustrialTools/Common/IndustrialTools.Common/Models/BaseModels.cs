@@ -3,7 +3,24 @@ using System.Collections.ObjectModel;
 
 namespace IndustrialTools.Common.Models
 {
-    public class ComplexInfoModel : BindableBase
+    /// <summary>
+    /// 
+    /// </summary>
+    public class TreeNode
+    {
+        public string Name { get; set; }
+        public ObservableCollection<TreeNode> Children { get; set; }
+
+        public TreeNode(string name)
+        {
+            Name = name;
+            Children = new ObservableCollection<TreeNode>();
+        }
+    }
+    /// <summary>
+    /// 复杂信息模型  
+    /// </summary>
+    public class TreeDataModels  : BindableBase
     {
         private DbType key = DbType.MySql;
         /// <summary>
@@ -26,6 +43,10 @@ namespace IndustrialTools.Common.Models
         }
     }
 
+
+    /// <summary>
+    /// 菜单项模型
+    /// </summary>
     public class MenuItemModel
     {
         public string Header { get; set; }= "";
