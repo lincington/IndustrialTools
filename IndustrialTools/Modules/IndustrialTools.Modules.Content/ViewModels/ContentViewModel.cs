@@ -1,11 +1,9 @@
 using IndustrialTools.Common.Models;
 using IndustrialTools.Core;
-using Npgsql.Replication.PgOutput.Messages;
 using Prism.Commands;
 using Prism.Dialogs;
 using Prism.Mvvm;
 using Prism.Navigation.Regions;
-using SqlSugar;
 using System.Collections.ObjectModel;
 
 namespace IndustrialTools.Modules.Content.ViewModels
@@ -19,7 +17,6 @@ namespace IndustrialTools.Modules.Content.ViewModels
             set { SetProperty(ref _message, value); }
         }
 
-
         private string _title = "IndustrialTools";
         public string Title
         {
@@ -28,17 +25,12 @@ namespace IndustrialTools.Modules.Content.ViewModels
         }
 
         private readonly IRegionManager _regionManager;
-
         IApplicationCommands _applicationCommands;
-
         private IDialogService _dialogService;
 
         public DelegateCommand<object> ConnectionCommand { get; private set; }
-        
-        
         public DelegateCommand<object> HelpCommand  { get; private set; }
      
-
         public ObservableCollection<TreeNode> Nodes { get; set; }
 
         public ContentViewModel(IApplicationCommands applicationCommands, IRegionManager regionManager, IDialogService dialogService)
