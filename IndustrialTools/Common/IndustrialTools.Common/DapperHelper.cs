@@ -1,9 +1,9 @@
 ﻿using System.Data;
+using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Text;
 using Dapper;
-using Microsoft.Data.SqlClient;
-using MySqlConnector;
+using MySql.Data.MySqlClient;
 using Npgsql;
 using Oracle.ManagedDataAccess.Client;
 
@@ -11,17 +11,9 @@ using Oracle.ManagedDataAccess.Client;
 namespace IndustrialTools.Common
 {
 
-    public interface IDapperFactory
-    {
 
-    }
-    public class DapperFactory : IDapperFactory
-    {
-
-    }
     public class DapperHelper
-    {
-      
+    {      
         string MysqlDB      = "SELECT SCHEMA_NAME as DBNAME FROM information_schema.SCHEMATA;";
         string SQLServerDB  = "SELECT  name as DBNAME FROM sys.databases;";
         string PostgreSQLDB = "SELECT   datname as DBNAME FROM pg_database;";

@@ -1,8 +1,24 @@
-﻿using SqlSugar;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 
 namespace IndustrialTools.Common.Models
 {
+
+    public enum DbType
+    {
+        MySql,
+        SqlServer,
+        Oracle,
+        PostgreSQL,
+        SQLite,
+        Access,
+        MongoDB,
+        Informix,
+        Sybase,
+        Firebird,
+        MariaDB,
+        ClickHouse,
+        Redis
+    }
     /// <summary>
     /// 
     /// </summary>

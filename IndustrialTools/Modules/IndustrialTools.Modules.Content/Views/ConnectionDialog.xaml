@@ -90,9 +90,9 @@
                                         ItemsSource="{Binding NoSQLComList}" 
                                         SelectedItem="{Binding CombboxItem}" DisplayMemberPath="Text" SelectedValuePath="Key" >
                                         <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="SelectionChanged">
-                                            <i:InvokeCommandAction Command="{Binding ComboboxSelectionChangedCommand}"  CommandParameter="{Binding ElementName=NoSQLCB, Path=SelectedItem}" />
-                                        </i:EventTrigger>
+                                            <i:EventTrigger EventName="SelectionChanged">
+                                                <i:InvokeCommandAction Command="{Binding ComboboxSelectionChangedCommand}"  CommandParameter="{Binding ElementName=NoSQLCB, Path=SelectedItem}" />
+                                            </i:EventTrigger>
                                         </i:Interaction.Triggers>
                                     </ComboBox>
                                     <TextBlock Grid.Row="2"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >主机:</TextBlock>
@@ -112,7 +112,6 @@
                         </TabControl>
                     </Grid>
                 </TabItem>
-
                 <TabItem Header="WEB  Connection" >
                     <Grid>
                         <TabControl TabStripPlacement="Top">
@@ -147,7 +146,7 @@
 
                             </TabItem>
                             <TabItem Header="HTTP/HTTPS"  Width="100">
-                                
+
                                 <Grid Grid.Column="2"  Margin="50,60,0,0"   >
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="3*"></ColumnDefinition>
@@ -208,7 +207,6 @@
                         </TabControl>
                     </Grid>
                 </TabItem>
-
                 <TabItem Header="Modbus  Connection">
                     <Grid>
                         <TabControl>
@@ -288,7 +286,6 @@
                         </TabControl>
                     </Grid>
                 </TabItem>
-
                 <TabItem Header="PLC  Connection">
                     <Grid>
                         <TabControl>
@@ -493,7 +490,6 @@
                         </TabControl>
                     </Grid>
                 </TabItem>
-
                 <TabItem Header="COM  Connection">
                     <Grid Grid.Column="2"  Margin="50,60,0,0" >
                         <Grid.ColumnDefinitions>

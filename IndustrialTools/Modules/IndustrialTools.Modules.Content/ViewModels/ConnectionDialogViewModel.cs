@@ -1,8 +1,6 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Dialogs;
-
-using SqlSugar;
 using System;
 using Microsoft.IdentityModel.Logging;
 using System.Windows;
