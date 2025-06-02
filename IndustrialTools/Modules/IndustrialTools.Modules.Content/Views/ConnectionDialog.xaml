@@ -10,6 +10,38 @@
             mc:Ignorable="d"    Background="LightGray"          
             MinHeight="600"  MinWidth="800" 
             d:DesignHeight="600" d:DesignWidth="800" >
+    <UserControl.Resources>
+        <Style x:Key="MyTextStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="TextDecorations">
+                <Setter.Value>
+                    <TextDecorationCollection>
+                        <TextDecoration>
+                            <TextDecoration.Pen>
+                                <Pen
+                             Brush="Black"
+                             DashCap="Round"
+                             EndLineCap="Round"
+                             StartLineCap="Round"
+                             Thickness="10">
+                                    <Pen.DashStyle>
+                                        <DashStyle Dashes="0.0,1.2" Offset="0.6" />
+                                    </Pen.DashStyle>
+                                </Pen>
+                            </TextDecoration.Pen>
+                            <TextDecoration.Location>
+                                <TextDecorationLocation>Strikethrough</TextDecorationLocation>
+                            </TextDecoration.Location>
+                        </TextDecoration>
+                    </TextDecorationCollection>
+                </Setter.Value>
+
+            </Setter>
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Foreground" Value="Transparent" />
+      
+        </Style>
+    </UserControl.Resources>
     <Grid x:Name="LayoutRoot" Margin="20" Background="White">
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -60,8 +92,12 @@
                                     <TextBlock Grid.Row="4"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >用户名:</TextBlock>
                                     <TextBox   Grid.Row="4"  Grid.Column="1"  Width="186"   Height="35"  Text="{Binding DBConnectMessage.UserName}"  HorizontalAlignment="Left"></TextBox>
 
-                                    <TextBlock Grid.Row="5"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >密码:</TextBlock>
-                                    <PasswordBox   Grid.Row="5"  Grid.Column="1"  Width="186"   Height="35"   HorizontalAlignment="Left"     local:PasswordBoxBindingHelper.PasswordContent="{Binding DBConnectMessage.Password,Mode=TwoWay}">
+                                    <TextBlock     Grid.Row="5"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >密码:</TextBlock>
+                                    <!--<TextBox   Grid.Row="5"  Grid.Column="1"  Width="186" BorderThickness="0" Height="35"    Style="{StaticResource MyTextStyle}"   Text="{Binding  DBConnectMessage.Password}"  HorizontalAlignment="Left"></TextBox>-->
+                                    <PasswordBox   Grid.Row="5"  Grid.Column="1"  Width="186"    Height="35"   HorizontalAlignment="Left"  x:Name="PbPwd" 
+                                                      local:PwdHelper.IsPasswordBindingEnabled="True"
+                                                      local:PwdHelper.BindedPassword="{Binding Path=DBConnectMessage.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                      PasswordChanged="PbPwd_OnPasswordChanged">
                                     </PasswordBox>
                                 </Grid>
                             </TabItem>
@@ -105,7 +141,10 @@
                                     <TextBox   Grid.Row="4"  Grid.Column="1"  Width="186"   Height="35"  Text="{Binding DBConnectMessage.UserName}"  HorizontalAlignment="Left"></TextBox>
 
                                     <TextBlock Grid.Row="5"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >密码:</TextBlock>
-                                    <PasswordBox   Grid.Row="5"  Grid.Column="1"  Width="186"   Height="35"   HorizontalAlignment="Left"     local:PasswordBoxBindingHelper.PasswordContent="{Binding DBConnectMessage.Password,Mode=TwoWay}">
+                                    <PasswordBox   Grid.Row="5"  Grid.Column="1"  Width="186"   Height="35"   HorizontalAlignment="Left"            
+                                 local:PwdHelper.IsPasswordBindingEnabled="True"
+local:PwdHelper.BindedPassword="{Binding Path=DBConnectMessage.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+PasswordChanged="PbPwd_OnPasswordChanged">
                                     </PasswordBox>
                                 </Grid>
                             </TabItem>
@@ -573,7 +612,10 @@
                         <TextBox   Grid.Row="4"  Grid.Column="1"  Width="186"   Height="35"  Text="{Binding DBConnectMessage.UserName}"  HorizontalAlignment="Left"></TextBox>
 
                         <TextBlock Grid.Row="5"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >密码:</TextBlock>
-                        <PasswordBox   Grid.Row="5"  Grid.Column="1"  Width="186"   Height="35"   HorizontalAlignment="Left"     local:PasswordBoxBindingHelper.PasswordContent="{Binding DBConnectMessage.Password,Mode=TwoWay}">
+                        <PasswordBox   Grid.Row="5"  Grid.Column="1"  Width="186"   Height="35"   HorizontalAlignment="Left"  
+                                    local:PwdHelper.IsPasswordBindingEnabled="True"
+local:PwdHelper.BindedPassword="{Binding Path=DBConnectMessage.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+PasswordChanged="PbPwd_OnPasswordChanged">
                         </PasswordBox>
                     </Grid>
                 </TabItem>
@@ -608,7 +650,10 @@
                         <TextBox   Grid.Row="3"  Grid.Column="1"  Width="186"   Height="35"  Text="{Binding DBConnectMessage.UserName}"  HorizontalAlignment="Left"></TextBox>
 
                         <TextBlock     Grid.Row="4"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >密码:</TextBlock>
-                        <PasswordBox   Grid.Row="4"  Grid.Column="1"  Width="186"   Height="35"   HorizontalAlignment="Left"     local:PasswordBoxBindingHelper.PasswordContent="{Binding DBConnectMessage.Password,Mode=TwoWay}">
+                        <PasswordBox   Grid.Row="4"  Grid.Column="1"  Width="186"   Height="35"   HorizontalAlignment="Left"     
+                                     local:PwdHelper.IsPasswordBindingEnabled="True"
+local:PwdHelper.BindedPassword="{Binding Path=DBConnectMessage.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+PasswordChanged="PbPwd_OnPasswordChanged">
                         </PasswordBox>
                     </Grid>
 

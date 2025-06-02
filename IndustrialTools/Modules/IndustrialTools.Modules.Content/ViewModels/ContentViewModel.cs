@@ -1,9 +1,12 @@
 using IndustrialTools.Common.Models;
 using IndustrialTools.Core;
+using IndustrialTools.Core.Events;
 using Prism.Commands;
 using Prism.Dialogs;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation.Regions;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace IndustrialTools.Modules.Content.ViewModels
@@ -33,39 +36,21 @@ namespace IndustrialTools.Modules.Content.ViewModels
      
         public ObservableCollection<TreeNode> Nodes { get; set; }
 
-        public ContentViewModel(IApplicationCommands applicationCommands, IRegionManager regionManager, IDialogService dialogService)
+        IEventAggregator _aggregator;
+        public ContentViewModel(IApplicationCommands applicationCommands,IEventAggregator aggregator, IRegionManager regionManager, IDialogService dialogService)
         {
             _applicationCommands = applicationCommands;
             _dialogService = dialogService;
             _regionManager = regionManager;
-
+            _aggregator = aggregator;
             ConnectionCommand = new DelegateCommand<object>(Connection);
-
             HelpCommand = new DelegateCommand<object>(Help);
-           
-
             _applicationCommands.Connection.RegisterCommand(ConnectionCommand);
-            _applicationCommands.Help.RegisterCommand(HelpCommand);
-        
+            _applicationCommands.Help.RegisterCommand(HelpCommand);       
             Nodes = new ObservableCollection<TreeNode>();
-            //{
-            //    new TreeNode("Root 1")
-            //    {
-            //        Children = new ObservableCollection<TreeNode>
-            //        {
-            //            new TreeNode("Child 1.1")
-            //            {
-            //        Children = new ObservableCollection<TreeNode>
-            //        {
-            //            new TreeNode("Child 2.1"),
-            //            new TreeNode("Child 2.2")
-            //        }
-            //        }
-            //        }
-            //    },
-            //    new TreeNode("Root 2")         
-            //};
         }
+   
+
         public  void Help(object ob)
         {
             string d = ob.ToString();
@@ -131,9 +116,11 @@ namespace IndustrialTools.Modules.Content.ViewModels
                 {
                     Title = "Result is OK";
                     Title = r.Parameters.GetValue<string>("ConnectionResult");
-                   string d  =   r.Parameters.GetValue<string>("ConnectionType");
-                    Nodes.Add(new TreeNode(d));
+                    string d  = r.Parameters.GetValue<string>("ConnectionType");
+                    List<TreeNode> treeNodes = r.Parameters.GetValue<List<TreeNode>>("ConnectionTreeNodes");
                     _regionManager.RequestNavigate("MidContentRegion", Title);
+                    Nodes.Add(new TreeNode(d));
+                    _aggregator.GetEvent<TreeNodeMessageEvent>().Publish(treeNodes);
                 }
                 else if (r.Result == ButtonResult.Cancel)
                     Title = "Result is Cancel";
@@ -142,7 +129,4 @@ namespace IndustrialTools.Modules.Content.ViewModels
             });
         }
     }
-
-
-  
 }

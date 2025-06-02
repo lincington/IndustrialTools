@@ -27,10 +27,8 @@ namespace IndustrialTools.Modules.Content.Views
 
         private void GridSplitter_MouseEnter(object sender, MouseEventArgs e)
         {
-
             GridSplitter.Width = 5;
             GridSplitter.Background= new SolidColorBrush(Colors.Blue);
-     
         }
 
         private void GridSplitter_MouseLeave(object sender, MouseEventArgs e)
