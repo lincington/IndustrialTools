@@ -38,6 +38,10 @@
                 </MenuItem.Resources>
             </MenuItem>
 
+            <MenuItem Header="SECS/GEM">
+
+            </MenuItem>
+
             <MenuItem Header="Build Server">
 
             </MenuItem>
