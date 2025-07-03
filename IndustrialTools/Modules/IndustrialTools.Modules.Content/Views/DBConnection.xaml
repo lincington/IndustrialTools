@@ -4,9 +4,45 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:IndustrialTools.Modules.Content.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock>DBConnection</TextBlock> 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d" Background="LightGray"
+             d:DesignHeight="450" d:DesignWidth="800"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True" 
+             >
+    <Grid Margin="5" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" MinWidth="50" Background="White">
+            <StackPanel Orientation="Vertical"  >
+                <TextBlock Text="DataBase" Height="35" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                <ScrollViewer VerticalScrollBarVisibility="Visible"  HorizontalScrollBarVisibility="Disabled">
+                    <TreeView x:Name="treeView" ItemsSource="{Binding Nodes}" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <i:InvokeCommandAction Command="{Binding ShowContentCommand}" CommandParameter="{Binding ElementName=treeView, Path=SelectedItem}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <TreeView.ItemTemplate>
+                            <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                <TextBlock Text="{Binding Name}" />
+                            </HierarchicalDataTemplate>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
+                </ScrollViewer>
+               
+            </StackPanel>
+        </Border>
+
+        <!-- GridSplitter -->
+        <GridSplitter x:Name="GridSplitter" Grid.Column="1" Width="1" Background="Gray"  MouseEnter="GridSplitter_MouseEnter"  MouseLeave="GridSplitter_MouseLeave"
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        
+        
     </Grid>
 </UserControl>

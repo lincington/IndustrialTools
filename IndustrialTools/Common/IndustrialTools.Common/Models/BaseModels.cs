@@ -3,7 +3,7 @@
 namespace IndustrialTools.Common.Models
 {
 
-    public enum DbType
+    public enum DataBaseType
     {
         MySql,
         SqlServer,
@@ -12,11 +12,6 @@ namespace IndustrialTools.Common.Models
         SQLite,
         Access,
         MongoDB,
-        Informix,
-        Sybase,
-        Firebird,
-        MariaDB,
-        ClickHouse,
         Redis
     }
     /// <summary>
@@ -24,12 +19,21 @@ namespace IndustrialTools.Common.Models
     /// </summary>
     public class TreeNode
     {
+        public string FullName  { get; set; }
         public string Name { get; set; }
         public ObservableCollection<TreeNode> Children { get; set; }
 
         public TreeNode(string name)
         {
             Name = name;
+            FullName = name;
+            Children = new ObservableCollection<TreeNode>();   
+        }
+
+        public TreeNode(string name, string fullName)
+        {
+            Name = name;
+            FullName = fullName;
             Children = new ObservableCollection<TreeNode>();
         }
     }
@@ -38,11 +42,11 @@ namespace IndustrialTools.Common.Models
     /// </summary>
     public class TreeDataModels  : BindableBase
     {
-        private DbType key = DbType.MySql;
+        private DataBaseType key = DataBaseType.MySql;
         /// <summary>
         /// Key值
         /// </summary>
-        public DbType Key
+        public DataBaseType Key
         {
             get { return key; }
             set { SetProperty(ref key, value); }
@@ -66,12 +70,9 @@ namespace IndustrialTools.Common.Models
     public class MenuItemModel
     {
         public string Header { get; set; }= "";
-
         public CompositeCommand  Command { get; set; } = new CompositeCommand();
-
         public object CommandParameter { get; set; } =  new object ();    
         public ObservableCollection<MenuItemModel> Children { get; set; } = new ObservableCollection<MenuItemModel>();
     }
-
 
 }

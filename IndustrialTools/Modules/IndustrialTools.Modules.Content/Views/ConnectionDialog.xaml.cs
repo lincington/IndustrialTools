@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Reflection;
+using System.Windows.Controls;
 
 namespace IndustrialTools.Modules.Content.Views
 {
@@ -17,6 +18,20 @@ namespace IndustrialTools.Modules.Content.Views
             TextBox tb = sender as TextBox; 
 
             tb.CaretIndex = tb.Text.Length;
+        }
+
+        private void PbPwd_OnPasswordChanged(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var passwordtext = (PasswordBox)sender;
+            SetPasswordBoxSelection(passwordtext, passwordtext.Password.Length + 1, passwordtext.Password.Length + 1);
+        }
+
+        private static void SetPasswordBoxSelection(PasswordBox passwordBox, int start, int length)
+        {
+            var select = passwordBox.GetType().GetMethod("Select",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+
+            select.Invoke(passwordBox, new object[] { start, length });
         }
     }
 }
