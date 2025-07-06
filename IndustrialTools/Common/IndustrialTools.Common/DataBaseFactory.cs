@@ -2,6 +2,7 @@
 using IndustrialTools.Common.Models;
 using Microsoft.Data.Sqlite;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
 using Npgsql;
 using Oracle.ManagedDataAccess.Client;
 using System.Data;
@@ -27,9 +28,100 @@ namespace IndustrialTools.Common
         string PostgreSQLTable = "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';";
 
         public bool IsConnected { get; set; } = false;
-        public DataTable ExecuteSql(string ConnectionStringSql, DataBaseType dbType)
+
+        static string StrConnectionString = "";
+        public   DataTable ExecuteSql(string ConnectionStringSql, DataBaseType dbType)
         {
-            throw new NotImplementedException();
+            DataTable result = new DataTable();
+   
+            switch (dbType)
+            {
+                case DataBaseType.MySql:
+                    // MySQL
+                    using (IDbConnection db = new MySqlConnection(StrConnectionString))
+                    {
+                        try
+                        {
+
+                            result = ToDataTable(db.Query(ConnectionStringSql));
+                            IsConnected = true;
+                        }
+                        catch (Exception)
+                        {
+                            IsConnected = false;
+                        }
+                    }
+                    break;
+                case DataBaseType.SqlServer:
+                    // SQL Server
+                    //using (IDbConnection db = new SqlConnection(ConnectionString))
+                    //{
+                    //    try
+                    //    {
+                    //        db.Open();
+                    //        IsConnected = true;
+                    //    }
+                    //    catch (Exception)
+                    //    {
+                    //        IsConnected = false;
+                    //    }
+                    //}
+                    break;
+                case DataBaseType.PostgreSQL:
+                    // PostgreSQL
+                    //using (IDbConnection db = new NpgsqlConnection(ConnectionString))
+                    //{
+                    //    try
+                    //    {
+                    //        db.Open();
+                    //        IsConnected = true;
+                    //    }
+                    //    catch (Exception)
+                    //    {
+                    //        IsConnected = false;
+                    //    }
+                    //}
+                    break;
+                case DataBaseType.Oracle:
+                    // Oracle
+                    //using (IDbConnection db = new OracleConnection(ConnectionString))
+                    //{
+                    //    try
+                    //    {
+                    //        db.Open();
+                    //        IsConnected = true;
+                    //    }
+                    //    catch (Exception)
+                    //    {
+                    //        IsConnected = false;
+                    //    }
+                    //}
+                    break;
+
+                case DataBaseType.SQLite:
+                    // SQLite
+                    //using (IDbConnection db = new SqliteConnection("Data Source=TestDb.sqlite;Version=3;"))
+                    //{
+                    //    try
+                    //    {
+                    //        db.Open();
+                    //        IsConnected = true;
+                    //    }
+                    //    catch (Exception)
+                    //    {
+                    //        IsConnected = false;
+                    //    }
+                    //}
+
+                    break;
+                default:
+                    break;
+            }
+
+
+
+
+            return result;
         }
 
         public List<TreeNode> MakeSure(string ConnectionString, DataBaseType dbType)
@@ -139,6 +231,8 @@ namespace IndustrialTools.Common
 
         public bool Test(string ConnectionString, DataBaseType dbType)
         {
+            StrConnectionString = ConnectionString;
+
             switch (dbType)
             {
                 case DataBaseType.MySql:
@@ -221,7 +315,35 @@ namespace IndustrialTools.Common
                 default:
                     break;
             }
+           
             return IsConnected;
         }
+
+
+        public static DataTable ToDataTable(IEnumerable<dynamic> items)
+        {
+            var dataTable = new DataTable();
+            foreach (var item in items)
+            {
+                var dict = (IDictionary<string, object>)item;
+                if (dataTable.Columns.Count == 0)
+                {
+                    foreach (var key in dict.Keys)
+                    {
+                        dataTable.Columns.Add(key);
+                    }
+                }
+                
+                if (items == null) return dataTable;
+                var row = dataTable.NewRow();
+                foreach (var key in dict.Keys)
+                {
+                    row[key] = dict[key] ?? DBNull.Value;
+                }
+                dataTable.Rows.Add(row);
+            }
+            return dataTable;
+        }
+
     }
 }

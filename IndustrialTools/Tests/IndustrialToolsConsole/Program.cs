@@ -17,7 +17,7 @@ namespace IndustrialToolsConsole
             tasks[1] = Task.Factory.StartNew(() => dirs = Directory.GetDirectories(docsDirectory));
 
             Task.Factory.ContinueWhenAll(tasks, completedTasks => {
-                Console.WriteLine("{0} contains: ", docsDirectory);
+                Console.WriteLine("   {0} contains: ", docsDirectory);
                 Console.WriteLine("   {0} subdirectories", dirs.Length);
                 Console.WriteLine("   {0} files", files.Length);
             });
