@@ -51,8 +51,6 @@ namespace IndustrialTools.Common.Models
         public int DataBits { get; set; } = 1;
         public Parity Parity { get; set; } = Parity.None;
         public StopBits StopBits { get; set; } = StopBits.One;
-
-
     }
     public class TCPUDPConnection : ALLConnection {
 
