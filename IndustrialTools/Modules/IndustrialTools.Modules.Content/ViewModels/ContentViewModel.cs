@@ -33,7 +33,9 @@ namespace IndustrialTools.Modules.Content.ViewModels
 
         public DelegateCommand<object> ConnectionCommand { get; private set; }
         public DelegateCommand<object> HelpCommand  { get; private set; }
-     
+        public DelegateCommand<object> VisionCommand  { get; private set; }
+
+
         public ObservableCollection<TreeNode> Nodes { get; set; }
 
         IEventAggregator _aggregator;
@@ -45,11 +47,19 @@ namespace IndustrialTools.Modules.Content.ViewModels
             _aggregator = aggregator;
             ConnectionCommand = new DelegateCommand<object>(Connection);
             HelpCommand = new DelegateCommand<object>(Help);
+
+            VisionCommand = new DelegateCommand<object>(Vision);
             _applicationCommands.Connection.RegisterCommand(ConnectionCommand);
-            _applicationCommands.Help.RegisterCommand(HelpCommand);       
+            _applicationCommands.Help.RegisterCommand(HelpCommand);
+            _applicationCommands.Vision.RegisterCommand(VisionCommand);
+
             Nodes = new ObservableCollection<TreeNode>();
         }
    
+        public void Vision(object ob)
+        {
+            _regionManager.RequestNavigate("MidContentRegion", Title);
+        }
 
         public  void Help(object ob)
         {
