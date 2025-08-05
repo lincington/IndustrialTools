@@ -15,6 +15,7 @@
                 <MenuItem Header="OpenCV"  Command="{Binding ApplicationCommands.Vision}" CommandParameter="OpenCV"></MenuItem>
                 <MenuItem Header="VisionPro"></MenuItem>
                 <MenuItem Header="Halcon"></MenuItem>
+                <MenuItem Header="EmguCV" Command="{Binding ApplicationCommands.Vision}" CommandParameter="EmguCV"></MenuItem>
             </MenuItem>
             <MenuItem Header="Motion">
    
