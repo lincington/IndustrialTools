@@ -34,16 +34,13 @@ namespace IndustrialTools.Modules.Content.ViewModels
             get { return _tableView; }
             set { SetProperty(ref _tableView, value); }
         }
-
-
-
         public void ShowContentChangedDialog(object ob)
         {
             DataBaseFactory  dataBaseFactory = new DataBaseFactory();
 
             if (ob is TreeNode node)
             {
-                string  da = "Select * from " + node.FullName;
+                string  da = "Select * from " + node.FullName + "   LIMIT  1000";
                 TableView= dataBaseFactory.ExecuteSql(da, DataBaseType.MySql).DefaultView;  
             }
             else if (ob is string str)

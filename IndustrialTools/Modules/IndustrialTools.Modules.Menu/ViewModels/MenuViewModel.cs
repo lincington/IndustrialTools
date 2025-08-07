@@ -3,12 +3,10 @@ using IndustrialTools.Core;
 using Prism.Mvvm;
 using System.Collections.ObjectModel;
 
-
 namespace IndustrialTools.Modules.Menu.ViewModels
 {
     public class MenuViewModel : BindableBase
     {
-
         public ObservableCollection<MenuItemModel> MenuItems { get; set; }
 
         private string _message;
