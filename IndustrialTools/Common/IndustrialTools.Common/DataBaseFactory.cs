@@ -6,7 +6,7 @@ using MySqlX.XDevAPI.Common;
 using Npgsql;
 using Oracle.ManagedDataAccess.Client;
 using System.Data;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace IndustrialTools.Common
 {
@@ -54,18 +54,18 @@ namespace IndustrialTools.Common
                     break;
                 case DataBaseType.SqlServer:
                     // SQL Server
-                    //using (IDbConnection db = new SqlConnection(ConnectionString))
-                    //{
-                    //    try
-                    //    {
-                    //        db.Open();
-                    //        IsConnected = true;
-                    //    }
-                    //    catch (Exception)
-                    //    {
-                    //        IsConnected = false;
-                    //    }
-                    //}
+                    using (IDbConnection db = new SqlConnection(StrConnectionString))
+                    {
+                        try
+                        {
+                            db.Open();
+                            IsConnected = true;
+                        }
+                        catch (Exception)
+                        {
+                            IsConnected = false;
+                        }
+                    }
                     break;
                 case DataBaseType.PostgreSQL:
                     // PostgreSQL
@@ -112,21 +112,15 @@ namespace IndustrialTools.Common
                     //        IsConnected = false;
                     //    }
                     //}
-
                     break;
                 default:
                     break;
             }
-
-
-
-
             return result;
         }
 
         public List<TreeNode> MakeSure(string ConnectionString, DataBaseType dbType)
         {
-
             List<TreeNode> result = new List<TreeNode>();
             switch (dbType)
             {
@@ -143,7 +137,6 @@ namespace IndustrialTools.Common
                                 string dataname = Convert.ToString(x.DBNAME);
                                 string MysqlTablesql = "use " + dataname + ";" + MysqlTable;
                                 List<string>    gh = db.Query<string>(MysqlTablesql).ToList();
-
                                 gh.ForEach(x =>
                                 {
                                     TreeNode node2 = new TreeNode(x, Convert.ToString(dataname)+"."+ x);
@@ -205,7 +198,6 @@ namespace IndustrialTools.Common
                         }
                     }
                     break;
-
                 case DataBaseType.SQLite:
                     // SQLite
                     using (IDbConnection db = new SqliteConnection("Data Source=TestDb.sqlite;Version=3;"))
@@ -220,19 +212,16 @@ namespace IndustrialTools.Common
                             IsConnected = false;
                         }
                     }
-
                     break;
                 default:
                     break;
             }
             return result;
-
         }
 
         public bool Test(string ConnectionString, DataBaseType dbType)
         {
             StrConnectionString = ConnectionString;
-
             switch (dbType)
             {
                 case DataBaseType.MySql:
@@ -295,7 +284,6 @@ namespace IndustrialTools.Common
                         }
                     }
                     break;
-
                 case DataBaseType.SQLite:
                     // SQLite
                     using (IDbConnection db = new SqliteConnection("Data Source=TestDb.sqlite;Version=3;"))
@@ -310,7 +298,6 @@ namespace IndustrialTools.Common
                             IsConnected = false;
                         }
                     }
-
                     break;
                 default:
                     break;
@@ -318,8 +305,6 @@ namespace IndustrialTools.Common
            
             return IsConnected;
         }
-
-
         public static DataTable ToDataTable(IEnumerable<dynamic> items)
         {
             var dataTable = new DataTable();
@@ -333,7 +318,6 @@ namespace IndustrialTools.Common
                         dataTable.Columns.Add(key);
                     }
                 }
-                
                 if (items == null) return dataTable;
                 var row = dataTable.NewRow();
                 foreach (var key in dict.Keys)
@@ -344,6 +328,5 @@ namespace IndustrialTools.Common
             }
             return dataTable;
         }
-
     }
 }

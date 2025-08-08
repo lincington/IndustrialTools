@@ -9,7 +9,6 @@ namespace IndustrialTools.Common
         public List<CANOption> CANOptions { get; set; } = new List<CANOption>();
         public List<Product> ProductOptions  { get; set; } = new List<Product>();
         public List<SerialPortOption> SerialPortOptions { get; set; } = new List<SerialPortOption>();
-
         public MesConfigOption MesConfigOption { get; set; } = new MesConfigOption();
     }
 
@@ -32,15 +31,10 @@ namespace IndustrialTools.Common
     public class MesConfigOption 
     {
         public bool IsEnabled { get; set; } = false;
-
         public string GUID { get; set; } = Guid.NewGuid().ToString("N");
-
         public bool IsFormalUrl { get; set; } = false;
-
         public bool IsTestUrl { get; set; } = false;
-
         public string FormalUrl { get; set; } = "";
-
         public string TestUrl { get; set; } = "";
         public int IsPass { get; set; } // 执行结果，1表示Pass，0表示Fail
         public string LineNum { get; set; } = ""; // 行号，由设备提供
@@ -94,7 +88,6 @@ namespace IndustrialTools.Common
     public class PLCOption : IPOption
     {
         public string Name { get; set; } = "PLC";
-
     }
 
 

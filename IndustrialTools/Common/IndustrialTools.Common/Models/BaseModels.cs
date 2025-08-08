@@ -2,7 +2,6 @@
 
 namespace IndustrialTools.Common.Models
 {
-
     public enum DataBaseType
     {
         MySql,

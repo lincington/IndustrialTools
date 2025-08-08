@@ -7,7 +7,7 @@
         MouseLeftButtonDown="Window_MouseLeftButtonDown" 
         xmlns:core="clr-namespace:IndustrialTools.Core;assembly=IndustrialTools.Core"
         Background="LightGray"   WindowStartupLocation="CenterScreen"   
-        ShowInTaskbar="True"       Icon="/abcd.png"   WindowState="Maximized"
+        ShowInTaskbar="True"       Icon="/IndustrialTools.ico"   WindowState="Maximized"
         Title="{Binding Title}" Height="560" Width="1000" >
     <Grid>
         <Grid.RowDefinitions>
