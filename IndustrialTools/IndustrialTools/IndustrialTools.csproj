@@ -8,9 +8,6 @@
     <None Remove="IndustrialTools.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="abcd1.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="IndustrialTools.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
