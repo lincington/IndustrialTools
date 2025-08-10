@@ -3,6 +3,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net9.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <UseWindowsForms>True</UseWindowsForms>
+    <ApplicationIcon>IndustrialTools.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="IndustrialTools.ico" />
