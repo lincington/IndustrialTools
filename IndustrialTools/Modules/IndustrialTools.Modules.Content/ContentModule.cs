@@ -29,6 +29,11 @@ namespace IndustrialTools.Modules.Content
             containerRegistry.RegisterForNavigation<ModbusConnection>();
             containerRegistry.RegisterForNavigation<PLCConnection>();
 
+
+            containerRegistry.RegisterForNavigation<VisionHalcon>();
+            containerRegistry.RegisterForNavigation<VisionOpenCV2>();
+            containerRegistry.RegisterForNavigation<VisionEmguCV>();
+
         }
     }  
 }

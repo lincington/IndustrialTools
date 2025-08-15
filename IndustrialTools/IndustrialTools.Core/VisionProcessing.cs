@@ -14,19 +14,15 @@ namespace IndustrialTools.Core
             HOperatorSet.WriteImage(image, "jpg", 0, folderpath);
         }
 
-       public static void ocrEngineTest()
+        public static void ocrEngineTest()
         {
             var ocrEngine = new HalconDocumentOCR();
-
             try
             {
-                // 1. 初始化OCR引擎
                 ocrEngine.Initialize(); // 使用默认文档模型
-
                 // 2. 识别文档
                 string imagePath = "C:\\Users\\linci\\Desktop\\Screenshot 2025-08-09 230217.png";
                 var result = ocrEngine.RecognizeDocument(imagePath);
-
                 // 3. 输出结果
                 if (result.HasError)
                 {
@@ -36,7 +32,6 @@ namespace IndustrialTools.Core
                 {
                     Console.WriteLine($"识别结果:\n{result.RecognizedText}");
                     Console.WriteLine($"平均置信度: {result.AverageConfidence:P}");
-
                     // 输出每行文本
                     Console.WriteLine("\n按行输出:");
                     foreach (var line in result.Lines)
@@ -54,7 +49,6 @@ namespace IndustrialTools.Core
                 ocrEngine.Dispose();
             }
         }
-
     }
 
     public class HalconDocumentOCR
@@ -66,21 +60,17 @@ namespace IndustrialTools.Core
         /// 初始化OCR识别器
         /// </summary>
         /// <param name="ocrModelPath">OCR模型路径(默认使用Halcon内置文档模型)</param>
-        public void Initialize(string ocrModelPath = "D:\\HALCON\\HALCON-25.05-Progress\\ocr\\Document_0-9A-Z_NoRej.omc")
+        public void Initialize(string ocrModelPath = "D:\\HALCON\\HALCON-25.05-Progress\\ocr\\Document_0-9A-Z_Rej.omc")
         {
             try
             {
-                // 释放已有资源
                 if (_isInitialized)
                 {
                     HOperatorSet.ClearOcrClassMlp(_ocrHandle);
                     _ocrHandle = null;
                 }
-
-                // 加载OCR模型
                 HOperatorSet.ReadOcrClassMlp(ocrModelPath, out _ocrHandle);
                 _isInitialized = true;
-
                 Console.WriteLine($"OCR模型加载成功: {ocrModelPath}");
             }
             catch (HalconException ex)

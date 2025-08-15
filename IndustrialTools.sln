@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndustrialTools.Interface",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndustrialToolsConsole", "IndustrialTools\Tests\IndustrialToolsConsole\IndustrialToolsConsole.csproj", "{C6C9D75D-02F8-4BB6-9102-B13FC7309855}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndustrialTools.Lib", "IndustrialTools\Common\IndustrialTools.Lib\IndustrialTools.Lib.csproj", "{5CA2460F-75C5-4503-8815-A5C9D31B6AEE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{C6C9D75D-02F8-4BB6-9102-B13FC7309855}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6C9D75D-02F8-4BB6-9102-B13FC7309855}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6C9D75D-02F8-4BB6-9102-B13FC7309855}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CA2460F-75C5-4503-8815-A5C9D31B6AEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CA2460F-75C5-4503-8815-A5C9D31B6AEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CA2460F-75C5-4503-8815-A5C9D31B6AEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CA2460F-75C5-4503-8815-A5C9D31B6AEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +96,7 @@ Global
 		{458F4E11-1B87-4505-B254-AD0B0765E2BB} = {B70FC3F5-2694-4400-A0EF-ECF72C2A36F8}
 		{9C007498-0714-4021-9A01-36106491B624} = {B70FC3F5-2694-4400-A0EF-ECF72C2A36F8}
 		{C6C9D75D-02F8-4BB6-9102-B13FC7309855} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{5CA2460F-75C5-4503-8815-A5C9D31B6AEE} = {B70FC3F5-2694-4400-A0EF-ECF72C2A36F8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FC3446B4-9892-4AE4-8C95-C469732ACF39}

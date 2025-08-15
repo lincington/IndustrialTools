@@ -24,7 +24,6 @@ namespace IndustrialTools.Modules.Menu.ViewModels
         public MenuViewModel(IApplicationCommands applicationCommands)
         {
             ApplicationCommands = applicationCommands;
-            // Initialize the MenuItems collection with some sample data
             string[] Connection = { 
             "DB Connection",
             "WEB Connection",

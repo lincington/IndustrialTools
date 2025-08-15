@@ -1,20 +1,36 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net9.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="nlog.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="nlog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Emgu.CV" Version="4.11.0.5746" />
+    <PackageReference Include="Emgu.CV.Bitmap" Version="4.11.0.5746" />
+    <PackageReference Include="Emgu.CV.runtime.windows" Version="4.11.0.5746" />
+    <PackageReference Include="Emgu.CV.UI" Version="4.11.0.5746" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.0-preview2.25178.5" />
-    <PackageReference Include="MySql.Data" Version="9.3.0" />
+    <PackageReference Include="MySql.Data" Version="9.4.0" />
+    <PackageReference Include="NLog" Version="6.0.3" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="6.0.3" />
     <PackageReference Include="Npgsql" Version="9.0.3" />
     <PackageReference Include="Prism.Core" Version="9.0.537" />
-    <PackageReference Include="SqlSugarCore" Version="5.1.4.193" />
+    <PackageReference Include="SqlSugarCore" Version="5.1.4.199" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.119" />
-    <PackageReference Include="System.IO.Ports" Version="9.0.5" />
+    <PackageReference Include="System.IO.Ports" Version="9.0.8" />
     <PackageReference Include="YamlDotNet" Version="16.3.0" />
   </ItemGroup>
 

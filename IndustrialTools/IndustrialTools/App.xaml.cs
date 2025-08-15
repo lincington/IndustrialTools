@@ -39,7 +39,6 @@ namespace IndustrialTools
         {
             moduleCatalog.AddModule<MenuModule>();
             moduleCatalog.AddModule<ContentModule>();
-
         }
     }
 }
