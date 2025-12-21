@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="1.png" />
+    <None Remove="2.png" />
+    <None Remove="3.png" />
+    <None Remove="tessdata\chi_sim.traineddata" />
+    <None Remove="tessdata\eng.traineddata" />
+    <None Remove="tessdata\enm.traineddata" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tessdata\chi_sim.traineddata">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tessdata\eng.traineddata">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tessdata\enm.traineddata">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Paddle.Runtime.win_x64" Version="3.1.0.1" />
+    <PackageReference Include="PaddleOCRSharp" Version="5.1.0" />
+    <PackageReference Include="PaddleOCRSharp.PDF" Version="1.0.1" />
+    <PackageReference Include="Tesseract" Version="5.2.0" />
+    <PackageReference Include="TesseractOCR" Version="5.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="tessdata\script\" />
+  </ItemGroup>
+
+</Project>

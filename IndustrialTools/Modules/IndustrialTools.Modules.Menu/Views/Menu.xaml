@@ -12,13 +12,19 @@
     <Grid>
         <Menu>
             <MenuItem Header="Vision">
-                <MenuItem Header="OpenCV"  Command="{Binding ApplicationCommands.Vision}" CommandParameter="OpenCV"></MenuItem>
-                <MenuItem Header="VisionPro"></MenuItem>
-                <MenuItem Header="Halcon"></MenuItem>
-                <MenuItem Header="EmguCV" Command="{Binding ApplicationCommands.Vision}" CommandParameter="EmguCV"></MenuItem>
+                <MenuItem Header="OpenCV"  Command="{Binding ApplicationCommands.Vision}" CommandParameter="VisionOpenCV2"></MenuItem>
+                <!--<MenuItem Header="VisionPro"></MenuItem>-->
+                <MenuItem Header="Halcon"  Command="{Binding ApplicationCommands.Vision}" CommandParameter="VisionHalcon"></MenuItem>
+                <MenuItem Header="EmguCV" Command="{Binding ApplicationCommands.Vision}" CommandParameter="VisionEmguCV"></MenuItem>
             </MenuItem>
             <MenuItem Header="Motion">
    
+            </MenuItem>
+
+            <MenuItem Header="OCR">
+                <MenuItem Header="Tesseract" Command="{Binding ApplicationCommands.OCR}" CommandParameter="Tesseract"></MenuItem>
+                <MenuItem Header="PaddleOCRSharp" Command="{Binding ApplicationCommands.OCR}" CommandParameter="PaddleOCRSharp"></MenuItem>
+                <MenuItem Header="HalconOCR" Command="{Binding ApplicationCommands.OCR}" CommandParameter="HalconOCR"></MenuItem>
             </MenuItem>
             <!--<MenuItem Header="Connection"  Command="{Binding ApplicationCommands.Connection}" >
               

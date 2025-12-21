@@ -651,9 +651,8 @@ PasswordChanged="PbPwd_OnPasswordChanged">
 
                         <TextBlock     Grid.Row="4"  Grid.Column="0"  HorizontalAlignment="Left" VerticalAlignment="Bottom"  Height="35"    >密码:</TextBlock>
                         <PasswordBox   Grid.Row="4"  Grid.Column="1"  Width="186"   Height="35"   HorizontalAlignment="Left"     
-                                     local:PwdHelper.IsPasswordBindingEnabled="True"
-local:PwdHelper.BindedPassword="{Binding Path=DBConnectMessage.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-PasswordChanged="PbPwd_OnPasswordChanged">
+                       local:PwdHelper.IsPasswordBindingEnabled="True"  PasswordChanged="PbPwd_OnPasswordChanged"
+                    local:PwdHelper.BindedPassword="{Binding Path=DBConnectMessage.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
                         </PasswordBox>
                     </Grid>
 

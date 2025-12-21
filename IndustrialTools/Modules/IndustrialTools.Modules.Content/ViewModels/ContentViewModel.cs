@@ -58,7 +58,7 @@ namespace IndustrialTools.Modules.Content.ViewModels
    
         public void Vision(object ob)
         {
-            _regionManager.RequestNavigate("MidContentRegion", Title);
+            _regionManager.RequestNavigate("MidContentRegion", ob.ToString());
         }
 
         public  void Help(object ob)
