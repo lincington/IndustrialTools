@@ -1,9 +1,7 @@
-﻿
-using System.IO.Ports;
+﻿using System.IO.Ports;
 
 namespace IndustrialTools.Common
 {
-
     public class SystemConfigOption
     {
         public List<CANOption> CANOptions { get; set; } = new List<CANOption>();
@@ -22,12 +20,9 @@ namespace IndustrialTools.Common
     {
         public string EquipmentStation { get; set; } = "Left";
         public int EquipmentStationNo { get; set; } = 1;
-
         public string GUID { get; set; } = Guid.NewGuid().ToString("N");
         public bool IsEnabled { get; set; } = false;
     }
-
-
     public class MesConfigOption 
     {
         public bool IsEnabled { get; set; } = false;
@@ -60,7 +55,6 @@ namespace IndustrialTools.Common
         public StopBits StopBits { get; set; } = StopBits.One;
     }
 
-
     public class CANOption : Option
     {
         public string Name { get; set; } = "CAN";
@@ -84,22 +78,19 @@ namespace IndustrialTools.Common
         public int Port { get; set; } = 5000;
     }
 
-
     public class PLCOption : IPOption
     {
         public string Name { get; set; } = "PLC";
     }
 
-
     public class VoiceOption : IPOption
     {
         public string Name { get; set; } = "Voice";
-
     }
 
     public class InspectedDevicesOption : Option
     {
-        public string EquipmentStation { get; set; } = "";  
+        public string EquipmentStation { get; set; } = string.Empty;  
 
         public double NoiseCompensation { get; set; }
     }

@@ -21,7 +21,6 @@ namespace IndustrialTools.Common.Models
         public string FullName  { get; set; }
         public string Name { get; set; }
         public ObservableCollection<TreeNode> Children { get; set; }
-
         public TreeNode(string name)
         {
             Name = name;

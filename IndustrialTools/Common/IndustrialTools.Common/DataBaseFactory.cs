@@ -2,7 +2,6 @@
 using IndustrialTools.Common.Models;
 using Microsoft.Data.Sqlite;
 using MySql.Data.MySqlClient;
-using MySqlX.XDevAPI.Common;
 using Npgsql;
 using Oracle.ManagedDataAccess.Client;
 using System.Data;
@@ -42,7 +41,6 @@ namespace IndustrialTools.Common
                     {
                         try
                         {
-
                             result = ToDataTable(db.Query(ConnectionStringSql));
                             IsConnected = true;
                         }

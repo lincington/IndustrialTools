@@ -3,7 +3,6 @@ using IndustrialTools.Modules.Content.Views;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Navigation.Regions;
-using System.Windows.Controls;
 
 namespace IndustrialTools.Modules.Content
 {
@@ -24,7 +23,6 @@ namespace IndustrialTools.Modules.Content
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<Views.Content>();
-
             containerRegistry.RegisterForNavigation<DBConnection>();
             containerRegistry.RegisterForNavigation<ModbusConnection>();
             containerRegistry.RegisterForNavigation<PLCConnection>();

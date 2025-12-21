@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using YamlDotNet.Serialization;
 
 namespace IndustrialTools.Common
@@ -10,8 +6,6 @@ namespace IndustrialTools.Common
     public static class YamlHelper
     {
         private static ReaderWriterLockSlim _LockSlim = new ReaderWriterLockSlim();
-
-
         private static ISerializer _serializer;
         private static IDeserializer _deserializer;
         static YamlHelper()

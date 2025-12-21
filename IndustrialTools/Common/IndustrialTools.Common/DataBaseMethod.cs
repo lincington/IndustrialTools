@@ -1,8 +1,5 @@
-﻿
-
-namespace IndustrialTools.Common
+﻿namespace IndustrialTools.Common
 {
-
     public interface IDataBaseSettings
     {
         public string ConnectionString { get; set; } 
@@ -14,7 +11,7 @@ namespace IndustrialTools.Common
         public string ConnectionString { get ; set ; }= string.Empty;
     }
 
-    public class MySql {}
+    public class   MySql {}
     public class   SqlServer { }
     public class   Oracle { }
     public class   PostgreSQL { }
