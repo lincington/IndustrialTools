@@ -1,11 +1,10 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-
-namespace IndustrialTools.Core
+﻿namespace IndustrialTools.Core
 {
     public interface IApplicationCommands
     {
         CompositeCommand Vision  { get; }
+
+        CompositeCommand OCR { get; }
 
         CompositeCommand Motion { get; }
 
@@ -29,5 +28,6 @@ namespace IndustrialTools.Core
 
         public CompositeCommand SECS { get; } = new CompositeCommand();
 
+        public CompositeCommand OCR { get; } = new CompositeCommand();
     }
 }

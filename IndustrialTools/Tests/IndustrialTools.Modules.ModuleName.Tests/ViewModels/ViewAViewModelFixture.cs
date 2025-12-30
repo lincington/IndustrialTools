@@ -1,17 +1,11 @@
-﻿using IndustrialTools.Common;
-using Moq;
-using SqlSugar;
-using Xunit;
+﻿using Xunit;
 
 namespace IndustrialTools.Modules.ModuleName.Tests.ViewModels
 {
     public class ViewAViewModelFixture
     {
-  
-
         public ViewAViewModelFixture()
         {
- 
         }
 
         [Fact]

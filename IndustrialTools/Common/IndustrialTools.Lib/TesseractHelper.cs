@@ -11,7 +11,7 @@ namespace IndustrialTools.Lib
     {
         public TesseractHelper() { }
 
-        public string ImageToText(string imgPath= "D:\\IndustrialTools\\IndustrialTools\\IndustrialTools\\Common\\IndustrialTools.Lib\\Images\\1.png")
+        public string ImageToText(string imgPath= "E:\\GitHub\\IndustrialTools\\IndustrialTools\\Common\\IndustrialTools.Lib\\Images\\1.png")
         {
             try
             {

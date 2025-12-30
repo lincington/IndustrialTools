@@ -1,5 +1,4 @@
-﻿using IndustrialTools.Common;
-using IndustrialTools.Core;
+﻿using IndustrialTools.Core;
 using SqlSugar;
 
 namespace IndustrialToolsConsole

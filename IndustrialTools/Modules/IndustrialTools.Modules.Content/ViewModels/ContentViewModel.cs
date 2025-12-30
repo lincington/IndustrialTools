@@ -47,8 +47,9 @@ namespace IndustrialTools.Modules.Content.ViewModels
             _aggregator = aggregator;
             ConnectionCommand = new DelegateCommand<object>(Connection);
             HelpCommand = new DelegateCommand<object>(Help);
-
             VisionCommand = new DelegateCommand<object>(Vision);
+
+
             _applicationCommands.Connection.RegisterCommand(ConnectionCommand);
             _applicationCommands.Help.RegisterCommand(HelpCommand);
             _applicationCommands.Vision.RegisterCommand(VisionCommand);

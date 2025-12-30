@@ -8,7 +8,7 @@
     public class FunctionA : IFunction
     {
         public string Execute() => "FunctionA executed";
-    }
+    } 
 
     public class FunctionB : IFunction
     {

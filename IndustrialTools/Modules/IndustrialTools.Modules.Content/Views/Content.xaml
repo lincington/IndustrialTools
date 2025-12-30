@@ -39,7 +39,8 @@
             </Border>
 
             <!-- GridSplitter -->
-            <GridSplitter x:Name="GridSplitter" Grid.Column="1" Width="1" Background="Gray"  MouseEnter="GridSplitter_MouseEnter"  MouseLeave="GridSplitter_MouseLeave"
+            <GridSplitter x:Name="GridSplitter" Grid.Column="1" Width="1" Background="LightGray" 
+                          MouseEnter="GridSplitter_MouseEnter"  MouseLeave="GridSplitter_MouseLeave"
                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
 
             <!-- 右侧控件 -->

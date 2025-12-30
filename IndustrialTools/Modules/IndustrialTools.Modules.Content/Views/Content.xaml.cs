@@ -34,7 +34,7 @@ namespace IndustrialTools.Modules.Content.Views
         private void GridSplitter_MouseLeave(object sender, MouseEventArgs e)
         {
             GridSplitter.Width = 1;
-            GridSplitter.Background = new SolidColorBrush(Colors.Gray);
+            GridSplitter.Background = new SolidColorBrush(Colors.Blue);
         }
     }
 }
