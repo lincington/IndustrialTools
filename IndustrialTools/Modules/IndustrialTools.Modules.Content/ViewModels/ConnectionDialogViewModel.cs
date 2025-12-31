@@ -8,7 +8,6 @@ using IndustrialTools.Common.Models;
 using System.Collections.ObjectModel;
 using IndustrialTools.Common;
 using Prism.Events;
-using IndustrialTools.Core.Events;
 using System.Collections.Generic;
 
 

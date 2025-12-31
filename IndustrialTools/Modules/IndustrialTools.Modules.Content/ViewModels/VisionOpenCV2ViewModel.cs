@@ -26,16 +26,12 @@ namespace IndustrialTools.Modules.Content.ViewModels
 
         IEventAggregator _aggregator;
         public VisionOpenCV2ViewModel(IEventAggregator aggregator) {
-
+  
             _aggregator = aggregator;
-
-
             logger.Info("VisionOpenCV2ViewModel Init");
             //PaddleOCRSharpHelper  paddleOCRSharpHelper = new PaddleOCRSharpHelper();
             //Message= paddleOCRSharpHelper.GetPaddleOCREngine();
-
             TesseractHelper tesseractHelper = new TesseractHelper();
-
             Message = tesseractHelper.ImageToText();
         }
     }

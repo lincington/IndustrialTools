@@ -342,7 +342,6 @@ namespace IndustrialTools.Core
         public List<OCRCharacter> Characters { get; set; }
         public List<OCRLine> Lines { get; set; }
         public string ErrorMessage { get; set; }
-
         public bool HasError => !string.IsNullOrEmpty(ErrorMessage);
     }
 
@@ -368,7 +367,4 @@ namespace IndustrialTools.Core
         public int Width { get; set; }
         public int Height { get; set; }
     }
-
-
-
 }

@@ -80,7 +80,6 @@ namespace IndustrialTools.ViewModels
 
         #endregion
 
-
         public MainWindowViewModel()
         {
             MinimizeCommand = new DelegateCommand<object>(MiniMizeWindow);

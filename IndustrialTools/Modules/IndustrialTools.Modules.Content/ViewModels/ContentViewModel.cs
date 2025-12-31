@@ -36,8 +36,6 @@ namespace IndustrialTools.Modules.Content.ViewModels
         public DelegateCommand<object> ConnectionCommand { get; private set; }
         public DelegateCommand<object> HelpCommand  { get; private set; }
         public DelegateCommand<object> VisionCommand  { get; private set; }
-
-
         public ObservableCollection<TreeNode> Nodes { get; set; }
 
         IEventAggregator _aggregator;
