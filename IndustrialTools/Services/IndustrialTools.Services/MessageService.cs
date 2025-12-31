@@ -6,7 +6,7 @@ namespace IndustrialTools.Services
     {
         public string GetMessage()
         {
-            return "Hello from the Message Service";
+                    return "Hello from the Message Service";
         }
     }
 }
