@@ -55,6 +55,8 @@
 
             <MenuItem Header="Help">
                 <MenuItem Header="Welcome" Command="{Binding ApplicationCommands.Help}" CommandParameter="Welcome"></MenuItem>
+                <MenuItem Header="Update" Command="{Binding ApplicationCommands.Help}" CommandParameter="Update"></MenuItem>
+
                 <MenuItem Header="About"   Command="{Binding ApplicationCommands.Help}" CommandParameter="About"></MenuItem>
             </MenuItem>
  

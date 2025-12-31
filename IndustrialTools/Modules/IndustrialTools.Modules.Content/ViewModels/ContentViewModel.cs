@@ -1,3 +1,4 @@
+using AutoUpdaterDotNET;
 using IndustrialTools.Common.Models;
 using IndustrialTools.Core;
 using IndustrialTools.Core.Events;
@@ -6,6 +7,7 @@ using Prism.Dialogs;
 using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation.Regions;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -70,12 +72,32 @@ namespace IndustrialTools.Modules.Content.ViewModels
             {
                 Welcome();
             }
+
+            else if(d== "Update")
+            {
+                Update();
+            }
             else
             {
                 About();
             }
 
         }
+
+        public void Update()
+        {
+            AutoUpdater.InstalledVersion = new Version("1.2");
+            System.Timers.Timer timer = new System.Timers.Timer
+            {
+                Interval = 1 * 30 * 1000,
+            };
+            timer.Elapsed += delegate
+            {
+                AutoUpdater.Start("http://localhost:8081/Download/AutoUpdaterTest.xml");
+            };
+            timer.Start();
+        }
+
         public void Welcome()
         {
             _dialogService.ShowDialog("HelpDialog", new DialogParameters($"message=Welcome"), r =>
