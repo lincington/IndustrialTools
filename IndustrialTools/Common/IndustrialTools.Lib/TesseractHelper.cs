@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using Tesseract;
 
 namespace IndustrialTools.Lib
@@ -11,8 +7,13 @@ namespace IndustrialTools.Lib
     {
         public TesseractHelper() { }
 
-        public string ImageToText(string imgPath= "E:\\GitHub\\IndustrialTools\\IndustrialTools\\Common\\IndustrialTools.Lib\\Images\\1.png")
+        string path= AppDomain.CurrentDomain.BaseDirectory + "\\Images\\1.png";
+        public string ImageToText(string imgPath="")
         {
+            if (!File.Exists(imgPath))
+            {
+                imgPath = path;
+            }
             try
             {
                 using (var engine = new TesseractEngine("tessdata", "eng", EngineMode.Default))
