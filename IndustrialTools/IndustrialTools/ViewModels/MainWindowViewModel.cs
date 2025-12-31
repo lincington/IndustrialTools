@@ -14,7 +14,7 @@ namespace IndustrialTools.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        #region ============================================== top =============================================================
+        #region ======================= top ===================================
         public DelegateCommand<object> MinimizeCommand { get; set; }
         public DelegateCommand<object> MaximizeCommand { get; set; }
         public DelegateCommand<object> CloseCommand { get; set; }

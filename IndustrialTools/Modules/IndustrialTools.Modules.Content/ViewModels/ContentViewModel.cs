@@ -64,25 +64,18 @@ namespace IndustrialTools.Modules.Content.ViewModels
             _regionManager.RequestNavigate("MidContentRegion", ob.ToString());
         }
 
-        public  void Help(object ob)
-        {
+        public  void Help(object ob){
             string d = ob.ToString();
-
-            if (d== "Welcome")
-            {
+            if (d== "Welcome"){
                 Welcome();
             }
-
-            else if(d== "Update")
-            {
+            else if(d== "Update"){
                 Update();
             }
-            else
-            {
+            else{
                 About();
             }
-
-        }
+     }
 
         public void Update()
         {
@@ -93,7 +86,7 @@ namespace IndustrialTools.Modules.Content.ViewModels
             };
             timer.Elapsed += delegate
             {
-                AutoUpdater.Start("http://localhost:8081/Download/AutoUpdaterTest.xml");
+                AutoUpdater.Start("http://localhost:8086/Download/AutoUpdaterTest.xml");
             };
             timer.Start();
         }
