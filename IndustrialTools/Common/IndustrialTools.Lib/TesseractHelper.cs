@@ -8,6 +8,7 @@ namespace IndustrialTools.Lib
         public TesseractHelper() { }
 
         string path= AppDomain.CurrentDomain.BaseDirectory + "\\Images\\1.png";
+
         public string ImageToText(string imgPath="")
         {
             if (!File.Exists(imgPath))
