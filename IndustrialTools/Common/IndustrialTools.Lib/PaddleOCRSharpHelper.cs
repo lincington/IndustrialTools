@@ -5,13 +5,15 @@ namespace IndustrialTools.Lib
 {
     public class PaddleOCRSharpHelper
     {
-       
+       /// <summary>
+       /// Initializes a new instance of the PaddleOCRSharpHelper class.
+       /// </summary>
         public PaddleOCRSharpHelper()
         { 
         }
 
         private PaddleOCREngine engine;
-        OCRModelConfig config = null;
+        OCRModelConfig? config = null;
         public string GetPaddleOCREngine()
         {
  
@@ -31,7 +33,7 @@ namespace IndustrialTools.Lib
 
         engine = new PaddleOCREngine(config, oCRParameter);
 
-        StructureModelConfig structureModelConfig = null;
+        StructureModelConfig? structureModelConfig = null;
         StructureParameter structureParameter = new StructureParameter();
        var   structengine = new PaddleStructureEngine(structureModelConfig, structureParameter);
 
