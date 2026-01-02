@@ -7,10 +7,8 @@ namespace IndustrialTools.Lib
     {
        
         public PaddleOCRSharpHelper()
-        {
-  
+        { 
         }
-     
 
         private PaddleOCREngine engine;
         OCRModelConfig config = null;
